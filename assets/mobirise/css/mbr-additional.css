@@ -1044,3 +1044,18 @@ a {
   background-color: #4d6d9a;
   overflow: hidden;
 }
+.cid-t8zNJWYDic {
+  background-image: url("../../../assets/images/background9.jpg");
+}
+.cid-t8zNJWYDic .mbr-fallback-image.disabled {
+  display: none;
+}
+.cid-t8zNJWYDic .mbr-fallback-image {
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
