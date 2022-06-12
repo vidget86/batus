@@ -1038,19 +1038,13 @@ a {
   text-align: center;
   color: #ffffff;
 }
-.cid-sFGSOnwtIp {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  background-color: #4d6d9a;
-  overflow: hidden;
+.cid-t8zOm6ZTXB {
+  background-image: url("../../../assets/images/universe.webp");
 }
-.cid-t8zNJWYDic {
-  background-image: url("../../../assets/images/background9.jpg");
-}
-.cid-t8zNJWYDic .mbr-fallback-image.disabled {
+.cid-t8zOm6ZTXB .mbr-fallback-image.disabled {
   display: none;
 }
-.cid-t8zNJWYDic .mbr-fallback-image {
+.cid-t8zOm6ZTXB .mbr-fallback-image {
   display: block;
   background-size: cover;
   background-position: center center;
