@@ -29,7 +29,15 @@
         "isAnimatedOnScroll": true,
         "isScrollToTopButton": true
       },
-      "additionalSetColors": []
+      "additionalSetColors": [
+        "#0062ff",
+        "#e56b10",
+        "#e58b10",
+        "#088ec5",
+        "#e52222",
+        "#066fff",
+        "#ed4200"
+      ]
     },
     "path": "@PROJECT_PATH@",
     "versionFirst": "5.6.8",
@@ -69,120 +77,224 @@
         {
           "alias": false,
           "_styles": {
-            "padding-top": "(@paddingTop * 15px)",
-            "padding-bottom": "(@paddingBottom * 15px)",
-            "& when (@bg-type = 'color')": {
-              "background": "linear-gradient(to bottom right, @gColor, @bg-value)"
+            ".subsection": {
+              "background-attachment": "fixed !important",
+              "background-size": "cover !important",
+              "background-position": "center !important"
             },
-            "& when (@bg-type = 'image')": {
-              "background-image": "url(@bg-value)",
-              ".card-box": {
-                "padding": "1rem 2rem 2rem"
+            ".subsection:nth-child(1)": {
+              "& when (@bg1-type = \"image\")": {
+                "background-image": "url(@bg1-value)"
+              },
+              "& when (@bg1-type = \"color\")": {
+                "& when not (@gradientBg1)": {
+                  "background-color": "@bg1-value"
+                },
+                "& when (@gradientBg1)": {
+                  "background-image": "linear-gradient(~\"@{gradientAngle}deg\", @bg1-value, @gradient1Color2) !important"
+                }
+              },
+              "& when (@textAlign1 = 'left')": {
+                "text-align": "left !important"
+              },
+              "& when (@textAlign1 = 'center')": {
+                "text-align": "center !important"
+              },
+              "& when (@textAlign1 = 'right')": {
+                "text-align": "right !important"
+              },
+              ".overlay1": {
+                "z-index": "-1",
+                "& when not (@gradientOverlay1)": {
+                  "background": "@overlay1Color1",
+                  "opacity": "@overlay1Opacity"
+                },
+                "& when (@gradientOverlay1)": {
+                  "background": "linear-gradient(~\"@{gradientOverlayAngle1}deg\", @overlay1Color1, @overlay1Color2)",
+                  "opacity": "@overlay1Opacity"
+                }
               }
             },
-            "& when (@bg-type = 'video')": {
-              ".card-box": {
-                "padding": "1rem 2rem 2rem"
+            ".subsection:nth-child(2)": {
+              "& when (@bg2-type = \"image\")": {
+                "background-image": "url(@bg2-value)"
+              },
+              "& when (@bg2-type = \"color\")": {
+                "& when not (@gradientBg2)": {
+                  "background-color": "@bg2-value"
+                },
+                "& when (@gradientBg2)": {
+                  "background-image": "linear-gradient(~\"@{gradientAngle}deg\", @bg2-value, @gradient2Color2) !important"
+                }
+              },
+              "& when (@textAlign2 = 'left')": {
+                "text-align": "left !important"
+              },
+              "& when (@textAlign2 = 'center')": {
+                "text-align": "center !important"
+              },
+              "& when (@textAlign2 = 'right')": {
+                "text-align": "right !important"
+              },
+              ".overlay2": {
+                "z-index": "-1",
+                "& when not (@gradientOverlay2)": {
+                  "background": "@overlay2Color1",
+                  "opacity": "@overlay2Opacity"
+                },
+                "& when (@gradientOverlay2)": {
+                  "background": "linear-gradient(~\"@{gradientOverlayAngle2}deg\", @overlay2Color1, @overlay2Color2)",
+                  "opacity": "@overlay2Opacity"
+                }
               }
             },
-            ".text-color": {
+            ".subsection:nth-child(3)": {
+              "& when (@bg3-type = \"image\")": {
+                "background-image": "url(@bg3-value)"
+              },
+              "& when (@bg3-type = \"color\")": {
+                "& when not (@gradientBg3)": {
+                  "background-color": "@bg3-value"
+                },
+                "& when (@gradientBg3)": {
+                  "background-image": "linear-gradient(~\"@{gradientAngle}deg\", @bg3-value, @gradient3Color2) !important"
+                }
+              },
+              "& when (@textAlign3 = 'left')": {
+                "text-align": "left !important"
+              },
+              "& when (@textAlign3 = 'center')": {
+                "text-align": "center !important"
+              },
+              "& when (@textAlign3 = 'right')": {
+                "text-align": "right !important"
+              },
+              ".overlay3": {
+                "z-index": "-1",
+                "& when not (@gradientOverlay3)": {
+                  "background": "@overlay3Color1",
+                  "opacity": "@overlay3Opacity"
+                },
+                "& when (@gradientOverlay3)": {
+                  "background": "linear-gradient(~\"@{gradientOverlayAngle3}deg\", @overlay3Color1, @overlay3Color2)",
+                  "opacity": "@overlay3Opacity"
+                }
+              }
+            },
+            ".subsection:nth-child(4)": {
+              "& when (@bg4-type = \"image\")": {
+                "background-image": "url(@bg4-value)"
+              },
+              "& when (@bg4-type = \"color\")": {
+                "& when not (@gradientBg4)": {
+                  "background-color": "@bg4-value"
+                },
+                "& when (@gradientBg4)": {
+                  "background-image": "linear-gradient(~\"@{gradientAngle}deg\", @bg4-value, @gradient4Color2) !important"
+                }
+              },
+              "& when (@textAlign4 = 'left')": {
+                "text-align": "left !important"
+              },
+              "& when (@textAlign4 = 'center')": {
+                "text-align": "center !important"
+              },
+              "& when (@textAlign4 = 'right')": {
+                "text-align": "right !important"
+              },
+              ".overlay4": {
+                "z-index": "-1",
+                "& when not (@gradientOverlay4)": {
+                  "background": "@overlay4Color1",
+                  "opacity": "@overlay4Opacity"
+                },
+                "& when (@gradientOverlay4)": {
+                  "background": "linear-gradient(~\"@{gradientOverlayAngle4}deg\", @overlay4Color1, @overlay4Color2)",
+                  "opacity": "@overlay4Opacity"
+                }
+              }
+            },
+            ".subsection:nth-child(5)": {
+              "& when (@bg5-type = \"image\")": {
+                "background-image": "url(@bg5-value)"
+              },
+              "& when (@bg5-type = \"color\")": {
+                "& when not (@gradientBg5)": {
+                  "background-color": "@bg5-value"
+                },
+                "& when (@gradientBg5)": {
+                  "background-image": "linear-gradient(~\"@{gradientAngle}deg\", @bg5-value, @gradient5Color2) !important"
+                }
+              },
+              "& when (@textAlign5 = 'left')": {
+                "text-align": "left !important"
+              },
+              "& when (@textAlign5 = 'center')": {
+                "text-align": "center !important"
+              },
+              "& when (@textAlign5 = 'right')": {
+                "text-align": "right !important"
+              },
+              ".overlay5": {
+                "z-index": "-1",
+                "& when not (@gradientOverlay5)": {
+                  "background": "@overlay5Color1",
+                  "opacity": "@overlay5Opacity"
+                },
+                "& when (@gradientOverlay5)": {
+                  "background": "linear-gradient(~\"@{gradientOverlayAngle5}deg\", @overlay5Color1, @overlay5Color2)",
+                  "opacity": "@overlay5Opacity"
+                }
+              }
+            },
+            ".subsection:nth-child(6)": {
+              "& when (@bg6-type = \"image\")": {
+                "background-image": "url(@bg6-value)"
+              },
+              "& when (@bg6-type = \"color\")": {
+                "& when not (@gradientBg6)": {
+                  "background-color": "@bg6-value"
+                },
+                "& when (@gradientBg6)": {
+                  "background-image": "linear-gradient(~\"@{gradientAngle}deg\", @bg6-value, @gradient6Color2) !important"
+                }
+              },
+              "& when (@textAlign6 = 'left')": {
+                "text-align": "left !important"
+              },
+              "& when (@textAlign6 = 'center')": {
+                "text-align": "center !important"
+              },
+              "& when (@textAlign6 = 'right')": {
+                "text-align": "right !important"
+              },
+              ".overlay6": {
+                "z-index": "-1",
+                "& when not (@gradientOverlay6)": {
+                  "background": "@overlay6Color1",
+                  "opacity": "@overlay6Opacity"
+                },
+                "& when (@gradientOverlay6)": {
+                  "background": "linear-gradient(~\"@{gradientOverlayAngle6}deg\", @overlay6Color1, @overlay6Color2)",
+                  "opacity": "@overlay6Opacity"
+                }
+              }
+            },
+            ".mbr-section-title": {
+              "color": "#ffffff",
+              "text-align": "center"
+            },
+            ".mbr-section-subtitle": {
               "color": "#ffffff"
             },
-            "*": {
-              "margin": "0",
-              "padding": "0",
-              "outline": "none",
-              "border": "none",
-              "box-sizing": "border-box"
-            },
-            "*:before, *:after": {
-              "box-sizing": "border-box"
-            },
-            "html, body": {
-              "min-height": "100%"
-            },
-            "h1": {
-              "display": "table",
-              "margin": "5% auto 0",
-              "text-transform": "uppercase",
-              "font-family": "'Times Roman', sans-serif",
-              "font-size": "3em",
-              "font-weight": "400",
-              "color": "#fff",
-              "text-shadow": "0 1px white, 0 1px black"
-            },
-            ".container": {
-              "margin": "4% auto",
-              "width": "210px",
-              "height": "140px",
-              "position": "relative",
-              "perspective": "1000px"
-            },
-            "#carousel": {
-              "width": "100%",
-              "height": "100%",
-              "position": "absolute",
-              "transform-style": "preserve-3d",
-              "animation": "rotation 20s infinite linear"
-            },
-            "#carousel:hover": {
-              "animation-play-state": "paused"
-            },
-            "#carousel figure": {
-              "display": "block",
-              "position": "absolute",
-              "width": "90%",
-              "height": "50%px",
-              "left": "10px",
-              "top": "10px",
-              "background": "black",
-              "overflow": "hidden",
-              "border": "solid 3px black"
-            },
-            "#carousel figure:nth-child(1)": {
-              "transform": "rotateY(0deg) translateZ(288px)"
-            },
-            "#carousel figure:nth-child(2)": {
-              "transform": "rotateY(40deg) translateZ(288px)"
-            },
-            "#carousel figure:nth-child(3)": {
-              "transform": "rotateY(80deg) translateZ(288px)"
-            },
-            "#carousel figure:nth-child(4)": {
-              "transform": "rotateY(120deg) translateZ(288px)"
-            },
-            "#carousel figure:nth-child(5)": {
-              "transform": "rotateY(160deg) translateZ(288px)"
-            },
-            "#carousel figure:nth-child(6)": {
-              "transform": "rotateY(200deg) translateZ(288px)"
-            },
-            "#carousel figure:nth-child(7)": {
-              "transform": "rotateY(240deg) translateZ(288px)"
-            },
-            "#carousel figure:nth-child(8)": {
-              "transform": "rotateY(280deg) translateZ(288px)"
-            },
-            "#carousel figure:nth-child(9)": {
-              "transform": "rotateY(320deg) translateZ(288px)"
-            },
-            "img:hover": {
-              "-webkit-filter": "grayscale(0)",
-              "transform": "scale(1.2, 1.2)"
-            },
-            "@keyframes rotation": {
-              "from": {
-                "transform": "rotateY(0deg)"
-              },
-              "to": {
-                "transform": "rotateY(360deg)"
-              }
+            ".mbr-text, .mbr-section-btn": {
+              "color": "#ffffff"
             }
           },
           "_name": "design-block",
-          "_customHTML": "<section data-bs-version=\"5.1\" mbr-id=\"_3d_image_view\" class=\"mbr-section 3d_image_view\" data-bg-video=\"{{bg.type == 'video' && bg.value.url}}\" mbr-class=\"{'mbr-parallax-background': bg.parallax}\">\n\n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"8\" step=\"1\" value=\"0\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"8\" step=\"1\" value=\"1\">\n      <input type=\"checkbox\" title=\"Show Title\" name=\"showTitle\">\n      <select title=\"Slider Count\" name=\"dimgslidercount\">\n            <option value=\"1\">1</option>\n            <option value=\"2\">2</option>\n            <option value=\"3\">3</option>\n        <option value=\"4\">4</option>\n            <option value=\"5\">5</option>\n            <option value=\"6\">6</option>\n        <option value=\"7\">7</option>\n            <option value=\"8\">8</option>\n            <option value=\"9\" selected>9</option>\n        </select>\n       <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Background Image\" value=\"../_images/background2.jpg\" parallax>\n            <input type=\"color\" title=\"Background Color\" value=\"#000000\" selected>\n            <input type=\"video\" title=\"Background Video\" value=\"http://www.youtube.com/watch?v=uNCr7NdOJgw\">\n        </fieldset>\n      <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\" checked>\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#efefef\" condition=\"overlay && bg.type !== 'color'\">\n      <input type=\"color\" title=\"Gradiant Color\" name=\"gColor\" value=\"#000000\" condition=\"overlay && bg.type == 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0\" condition=\"overlay && bg.type !== 'color'\">\n    <!-- End block parameters -->\n    </mbr-parameters> \n  <!--Overlay-->\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n    <!--Container-->\n<h1 mbr-if=\"showTitle\">3D IMAGE View</h1><br>\n<div class=\"container\">\n    <div id=\"carousel\">\n        <figure mbr-if=\"dimgslidercount > 0\"><img src alt></figure>\n        <figure mbr-if=\"dimgslidercount > 1\"><img src=\"@PROJECT_PATH@/assets/images/1525807668-0-0-5184-3456-1440x900-80-0-1-8b20283ae3e8a4fba92fad477838e2fa.jpg.webp\" alt></figure>\n        <figure mbr-if=\"dimgslidercount > 2\"><img src=\"@PROJECT_PATH@/assets/images/universe.webp\" alt></figure>\n        <figure mbr-if=\"dimgslidercount > 3\"><img src=\"@PROJECT_PATH@/assets/images/2iemlo6sfsc54zxzogm2r63dokmtidro3ej3kjvgzcki51udziuyr9nrnxov3ep1un8dnqe-366x244.jpg\" alt></figure>\n        <figure mbr-if=\"dimgslidercount > 4\"><img src=\"@PROJECT_PATH@/assets/images/1525807668-0-0-5184-3456-1440x900-80-0-1-8b20283ae3e8a4fba92fad477838e2fa.jpg.webp\" alt></figure>\n        <figure mbr-if=\"dimgslidercount > 5\"><img src=\"https://res.cloudinary.com/dxfq3iotg/image/upload/v1562470010/BBBootstrap/Gallary/img-6.jpg\"></figure>\n        <figure mbr-if=\"dimgslidercount > 6\"><img src=\"https://res.cloudinary.com/dxfq3iotg/image/upload/v1562470010/BBBootstrap/Gallary/img-8.jpg\"></figure>\n        <figure mbr-if=\"dimgslidercount > 7\"><img src=\"@PROJECT_PATH@/assets/images/moy6feypr98-366x206.jpg\" alt></figure>\n        <figure mbr-if=\"dimgslidercount > 8\"><img src=\"@PROJECT_PATH@/assets/images/yunjmvg00sob7mml9hxtqhw9xhxpm7njtrvlue-f9psdatplzpa2l8-s20xb1mwabco-3bzn-366x244.jpg\" alt></figure>\n    </div>\n</div>\n</section>",
-          "_cid": "3NDBIEmbUS",
-          "_anchor": "design-block-3NDBIEmbUS",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"mbr-fullscreen d-flex flex-column p-0\">\n    <!--\n      ███╗   ███╗ ██████╗ ██████╗ ██╗██╗    ██╗██╗███████╗███████╗\n      ████╗ ████║██╔═══██╗██╔══██╗██║██║    ██║██║██╔════╝██╔════╝\n      ██╔████╔██║██║   ██║██████╔╝██║██║ █╗ ██║██║███████╗█████╗  \n      ██║╚██╔╝██║██║   ██║██╔══██╗██║██║███╗██║██║╚════██║██╔══╝  \n      ██║ ╚═╝ ██║╚██████╔╝██████╔╝██║╚███╔███╔╝██║███████║███████╗\n      ╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚═╝ ╚══╝╚══╝ ╚═╝╚══════╝╚══════╝\n      MobiWise Block. If you like it, don't forget to buy me a coffee.\n      https://www.buymeacoffee.com/MobiWise\n      Version: 0.1 | update : 2022/03/24\n      -->\n    <mbr-parameters>\n      <header>- - - General - - -</header>\n      <select title=\"Subsection Amount\" name=\"subsectionAmount\">\n        <option value=\"2\">2</option>\n        <option value=\"3\" selected>3</option>\n        <option value=\"4\">4</option>\n        <option value=\"5\">5</option>\n        <option value=\"6\">6</option>\n      </select>\n      <header>- - - Subsection 1 - - -</header>\n      <input type=\"checkbox\" title=\"Title\" name=\"showTitle1\" checked>\n      <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubitle1\" checked>\n      <input type=\"checkbox\" title=\"Text\" name=\"showText1\" checked>\n      <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons1\" checked>\n      <input type=\"range\" inline name=\"textWidth1\" title=\"Width\" min=\"4\" max=\"12\" value=\"6\" step=\"1\">\n      <select title=\"Content Align\" name=\"contentAlign1\">\n        <option value=\"justify-content-start\">Left</option>\n        <option value=\"justify-content-center\" selected>Center</option>\n        <option value=\"justify-content-end\">Right</option>\n      </select>\n      <select title=\"Text Align\" name=\"textAlign1\">\n        <option value=\"left\">Left</option>\n        <option value=\"center\" selected>Center</option>\n        <option value=\"right\">Right</option>\n      </select>\n      <fieldset type=\"background\" name=\"bg1\">\n        <input type=\"image\" title=\"Image\" value=\"@PROJECT_PATH@/assets/images/qmphhjtzbuvspvtg5wey9yp5czkipjptoffzbmwjtrmqdm-2000x1333.jpeg\" selected>\n        <input type=\"color\" title=\"Color & Gradient\" value=\"#4479d9\">\n        <input type=\"video\" title=\"Video\" value=\"https://youtu.be/bmgiCS-eOes\">\n      </fieldset>\n      <input type=\"checkbox\" title=\"Gradient Bg\" name=\"gradientBg1\" condition=\"bg1.type == 'color'\" checked>\n      <input type=\"color\" title=\"Color 2\" name=\"gradient1Color2\" value=\"#e43f3f\" condition=\"gradientBg1 && bg1.type == 'color'\">\n      <input type=\"range\" inline name=\"gradientAngle\" title=\"Gradient Angle\" min=\"0\" max=\"360\" step=\"1\" value=\"0\" condition=\"gradientBg1 && bg1.type == 'color'\">\n      <input type=\"checkbox\" title=\"Overlay\" name=\"overlay1\" condition=\"bg1.type !== 'color'\" checked>\n      <input type=\"color\" title=\"Overlay Color\" name=\"overlay1Color1\" value=\"#ed4200\" condition=\"overlay1 && bg1.type !== 'color'\">\n      <input type=\"checkbox\" title=\"Gradient Overlay\" name=\"gradientOverlay1\" condition=\"overlay1 && bg1.type !== 'color'\" checked>\n      <input type=\"color\" title=\"Overlay Color 2\" name=\"overlay1Color2\" value=\"#088ec5\" condition=\"overlay1 && bg1.type !== 'color' && gradientOverlay1\">\n      <input type=\"range\" title=\"Gradient Angle\" name=\"gradientOverlayAngle1\" min=\"0\" max=\"360\" value=\"347\" step=\"1\" condition=\"overlay1 && bg1.type !== 'color' && gradientOverlay1\">\n      <input type=\"range\" title=\"Opacity\" name=\"overlay1Opacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.2\" condition=\"overlay1 && bg1.type !== 'color'\">\n      <header>- - - Subsection 2 - - -</header>\n      <input type=\"checkbox\" title=\"Title\" name=\"showTitle2\" checked>\n      <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubitle2\" checked>\n      <input type=\"checkbox\" title=\"Text\" name=\"showText2\" checked>\n      <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons2\" checked>\n      <input type=\"range\" inline name=\"textWidth2\" title=\"Width\" min=\"4\" max=\"12\" value=\"6\" step=\"1\">\n      <select title=\"Content Align\" name=\"contentAlign2\">\n        <option value=\"justify-content-start\">Left</option>\n        <option value=\"justify-content-center\">Center</option>\n        <option value=\"justify-content-end\" selected>Right</option>\n      </select>\n      <select title=\"Text Align\" name=\"textAlign2\">\n        <option value=\"left\" selected>Left</option>\n        <option value=\"center\">Center</option>\n        <option value=\"right\">Right</option>\n      </select>\n      <fieldset type=\"background\" name=\"bg2\">\n        <input type=\"image\" title=\"Image\" value=\"@PROJECT_PATH@/assets/images/knwy2cxz-lc-2000x1334.jpeg\" selected>\n        <input type=\"color\" title=\"Color & Gradient\" value=\"#4479d9\">\n      </fieldset>\n      <input type=\"checkbox\" title=\"Gradient Bg\" name=\"gradientBg2\" condition=\"bg2.type == 'color'\" checked>\n      <input type=\"color\" title=\"Color 2\" name=\"gradient2Color2\" value=\"#e43f3f\" condition=\"gradientBg2 && bg2.type == 'color'\">\n      <input type=\"range\" inline name=\"gradientAngle\" title=\"Gradient Angle\" min=\"0\" max=\"360\" step=\"1\" value=\"60\" condition=\"gradientBg2 && bg2.type == 'color'\">\n      <input type=\"checkbox\" title=\"Overlay\" name=\"overlay2\" condition=\"bg2.type !== 'color'\" checked>\n      <input type=\"color\" title=\"Overlay Color\" name=\"overlay2Color1\" value=\"#e56b10\" condition=\"overlay2 && bg2.type !== 'color'\">\n      <input type=\"checkbox\" title=\"Gradient Overlay\" name=\"gradientOverlay2\" condition=\"overlay2 && bg2.type !== 'color'\" checked>\n      <input type=\"color\" title=\"Overlay Color 2\" name=\"overlay2Color2\" value=\"#0062ff\" condition=\"overlay2 && bg2.type !== 'color' && gradientOverlay2\">\n      <input type=\"range\" title=\"Gradient Angle\" name=\"gradientOverlayAngle2\" min=\"0\" max=\"360\" value=\"203\" step=\"1\" condition=\"overlay2 && bg2.type !== 'color' && gradientOverlay2\">\n      <input type=\"range\" title=\"Opacity\" name=\"overlay2Opacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.2\" condition=\"overlay2 && bg2.type !== 'color'\">\n      <header>- - - Subsection 3 - - -</header>\n      <input type=\"checkbox\" title=\"Title\" name=\"showTitle3\" checked condition=\"subsectionAmount > 2\">\n      <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubitle3\" checked condition=\"subsectionAmount > 2\">\n      <input type=\"checkbox\" title=\"Text\" name=\"showText3\" checked condition=\"subsectionAmount > 2\">\n      <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons3\" condition=\"subsectionAmount > 2\" checked=\"checked\">\n      <input type=\"range\" inline name=\"textWidth3\" title=\"Width\" min=\"4\" max=\"12\" value=\"6\" step=\"1\" condition=\"subsectionAmount > 2\">\n      <select title=\"Content Align\" name=\"contentAlign3\" condition=\"subsectionAmount > 2\">\n        <option value=\"justify-content-start\" selected>Left</option>\n        <option value=\"justify-content-center\">Center</option>\n        <option value=\"justify-content-end\">Right</option>\n      </select>\n      <select title=\"Text Align\" name=\"textAlign3\" condition=\"subsectionAmount > 2\">\n        <option value=\"left\">Left</option>\n        <option value=\"center\">Center</option>\n        <option value=\"right\" selected>Right</option>\n      </select>\n      <fieldset type=\"background\" name=\"bg3\">\n        <input type=\"image\" title=\"Image\" value=\"@PROJECT_PATH@/assets/images/moy6feypr98-2000x1125.jpg\" selected condition=\"subsectionAmount > 2\">\n        <input type=\"color\" title=\"Color & Gradient\" value=\"#4479d9\" condition=\"subsectionAmount > 2\">\n      </fieldset>\n      <input type=\"checkbox\" title=\"Gradient Bg\" name=\"gradientBg3\" condition=\"bg3.type == 'color'\" checked>\n      <input type=\"color\" title=\"Color 2\" name=\"gradient3Color2\" value=\"#e43f3f\" condition=\"gradientBg3 && bg3.type == 'color'\">\n      <input type=\"range\" inline name=\"gradientAngle\" title=\"Gradient Angle\" min=\"0\" max=\"360\" step=\"1\" value=\"120\" condition=\"gradientBg3 && bg3.type == 'color'\">\n      <input type=\"checkbox\" title=\"Overlay\" name=\"overlay3\" condition=\"bg3.type !== 'color' &amp;&amp; subsectionAmount > 2\" checked=\"checked\">\n      <input type=\"color\" title=\"Overlay Color\" name=\"overlay3Color1\" value=\"#4479d9\" condition=\"overlay3 &amp;&amp; bg3.type !== 'color' &amp;&amp; subsectionAmount > 2\">\n      <input type=\"checkbox\" title=\"Gradient Overlay\" name=\"gradientOverlay3\" condition=\"overlay3 &amp;&amp; bg3.type !== 'color' &amp;&amp; subsectionAmount > 2\" checked=\"\">\n      <input type=\"color\" title=\"Overlay Color 2\" name=\"overlay3Color2\" value=\"#e43f3f\" condition=\"overlay3 &amp;&amp; bg3.type !== 'color' &amp;&amp; gradientOverlay3 &amp;&amp; subsectionAmount > 2\">\n      <input type=\"range\" title=\"Gradient Angle\" name=\"gradientOverlayAngle3\" min=\"0\" max=\"360\" value=\"120\" step=\"1\" condition=\"overlay3 &amp;&amp; bg3.type !== 'color' &amp;&amp; gradientOverlay3 &amp;&amp; subsectionAmount > 2\">\n      <input type=\"range\" title=\"Opacity\" name=\"overlay3Opacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.2\" condition=\"overlay3 &amp;&amp; bg3.type !== 'color' &amp;&amp; subsectionAmount > 2\">\n      <header>- - - Subsection 4 - - -</header>\n      <input type=\"checkbox\" title=\"Title\" name=\"showTitle4\" checked condition=\"subsectionAmount > 3\">\n      <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubitle4\" checked condition=\"subsectionAmount > 3\">\n      <input type=\"checkbox\" title=\"Text\" name=\"showText4\" checked condition=\"subsectionAmount > 3\">\n      <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons4\" checked condition=\"subsectionAmount > 3\">\n      <input type=\"range\" inline name=\"textWidth4\" title=\"Width\" min=\"4\" max=\"12\" value=\"6\" step=\"1\" condition=\"subsectionAmount > 3\">\n      <select title=\"Content Align\" name=\"contentAlign4\" condition=\"subsectionAmount > 3\">\n        <option value=\"justify-content-start\">Left</option>\n        <option value=\"justify-content-center\">Center</option>\n        <option value=\"justify-content-end\" selected>Right</option>\n      </select>\n      <select title=\"Text Align\" name=\"textAlign4\" condition=\"subsectionAmount > 3\">\n        <option value=\"left\">Left</option>\n        <option value=\"center\">Center</option>\n        <option value=\"right\" selected>Right</option>\n      </select>\n      <fieldset type=\"background\" name=\"bg4\">\n        <input type=\"image\" title=\"Image\" value=\"https://r.mobirisesite.com/201592/assets/images/mbr-1920x1277.jpg?v=1NGTLS\" selected condition=\"subsectionAmount > 3\">\n        <input type=\"color\" title=\"Color & Gradient\" value=\"#4479d9\" condition=\"subsectionAmount > 3\">\n      </fieldset>\n      <input type=\"checkbox\" title=\"Gradient Bg\" name=\"gradientBg4\" condition=\"bg4.type == 'color'\" checked>\n      <input type=\"color\" title=\"Color 2\" name=\"gradient4Color2\" value=\"#e43f3f\" condition=\"gradientBg4 && bg4.type == 'color'\">\n      <input type=\"range\" inline name=\"gradientAngle\" title=\"Gradient Angle\" min=\"0\" max=\"360\" step=\"1\" value=\"180\" condition=\"gradientBg4 && bg4.type == 'color'\">\n      <input type=\"checkbox\" title=\"Overlay\" name=\"overlay4\" condition=\"bg4.type !== 'color' &amp;&amp; subsectionAmount > 3\" checked=\"checked\">\n      <input type=\"color\" title=\"Overlay Color\" name=\"overlay4Color1\" value=\"#4479d9\" condition=\"overlay4 &amp;&amp; bg4.type !== 'color' &amp;&amp; subsectionAmount > 3\">\n      <input type=\"checkbox\" title=\"Gradient Overlay\" name=\"gradientOverlay4\" condition=\"overlay4 &amp;&amp; bg4.type !== 'color' &amp;&amp; subsectionAmount > 3\" checked=\"\">\n      <input type=\"color\" title=\"Overlay Color 2\" name=\"overlay4Color2\" value=\"#e43f3f\" condition=\"overlay4 &amp;&amp; bg4.type !== 'color' &amp;&amp; gradientOverlay4 &amp;&amp; subsectionAmount > 3\">\n      <input type=\"range\" title=\"Gradient Angle\" name=\"gradientOverlayAngle4\" min=\"0\" max=\"360\" value=\"180\" step=\"1\" condition=\"overlay4 &amp;&amp; bg4.type !== 'color' &amp;&amp; gradientOverlay4 &amp;&amp; subsectionAmount > 3\">\n      <input type=\"range\" title=\"Opacity\" name=\"overlay4Opacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.6\" condition=\"overlay4 &amp;&amp; bg4.type !== 'color' &amp;&amp; subsectionAmount > 3\">\n      <header>- - - Subsection 5 - - -</header>\n      <input type=\"checkbox\" title=\"Title\" name=\"showTitle5\" checked condition=\"subsectionAmount > 4\">\n      <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubitle5\" checked condition=\"subsectionAmount > 4\">\n      <input type=\"checkbox\" title=\"Text\" name=\"showText5\" checked condition=\"subsectionAmount > 4\">\n      <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons5\" checked condition=\"subsectionAmount > 4\">\n      <input type=\"range\" inline name=\"textWidth5\" title=\"Width\" min=\"4\" max=\"12\" value=\"6\" step=\"1\" condition=\"subsectionAmount > 4\">\n      <select title=\"Content Align\" name=\"contentAlign5\" condition=\"subsectionAmount > 4\">\n        <option value=\"justify-content-start\" selected>Left</option>\n        <option value=\"justify-content-center\">Center</option>\n        <option value=\"justify-content-end\">Right</option>\n      </select>\n      <select title=\"Text Align\" name=\"textAlign5\" condition=\"subsectionAmount > 4\">\n        <option value=\"left\" selected>Left</option>\n        <option value=\"center\">Center</option>\n        <option value=\"right\">Right</option>\n      </select>\n      <fieldset type=\"background\" name=\"bg5\">\n        <input type=\"image\" title=\"Image\" value=\"https://r.mobirisesite.com/201592/assets/images/mbr-1920x1297.jpg?v=1NGTLS\" selected condition=\"subsectionAmount > 4\">\n        <input type=\"color\" title=\"Color & Gradient\" value=\"#4479d9\" condition=\"subsectionAmount > 4\">\n      </fieldset>\n      <input type=\"checkbox\" title=\"Gradient Bg\" name=\"gradientBg5\" condition=\"bg5.type == 'color'\" checked>\n      <input type=\"color\" title=\"Color 2\" name=\"gradient5Color2\" value=\"#e43f3f\" condition=\"gradientBg5 && bg5.type == 'color'\">\n      <input type=\"range\" inline name=\"gradientAngle\" title=\"Gradient Angle\" min=\"0\" max=\"360\" step=\"1\" value=\"240\" condition=\"gradientBg5 && bg5.type == 'color'\">\n      <input type=\"checkbox\" title=\"Overlay\" name=\"overlay5\" condition=\"bg5.type !== 'color' &amp;&amp; subsectionAmount > 4\" checked=\"checked\">\n      <input type=\"color\" title=\"Overlay Color\" name=\"overlay5Color1\" value=\"#4479d9\" condition=\"overlay5 &amp;&amp; bg5.type !== 'color' &amp;&amp; subsectionAmount > 4\">\n      <input type=\"checkbox\" title=\"Gradient Overlay\" name=\"gradientOverlay5\" condition=\"overlay5 &amp;&amp; bg5.type !== 'color' &amp;&amp; subsectionAmount > 4\" checked=\"\">\n      <input type=\"color\" title=\"Overlay Color 2\" name=\"overlay5Color2\" value=\"#e43f3f\" condition=\"overlay5 &amp;&amp; bg5.type !== 'color' &amp;&amp; gradientOverlay5 &amp;&amp; subsectionAmount > 4\">\n      <input type=\"range\" title=\"Gradient Angle\" name=\"gradientOverlayAngle5\" min=\"0\" max=\"360\" value=\"240\" step=\"1\" condition=\"overlay5 &amp;&amp; bg5.type !== 'color' &amp;&amp; gradientOverlay5 &amp;&amp; subsectionAmount > 4\">\n      <input type=\"range\" title=\"Opacity\" name=\"overlay5Opacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.6\" condition=\"overlay5 &amp;&amp; bg5.type !== 'color' &amp;&amp; subsectionAmount > 4\">\n      <header>- - - Subsection 6 - - -</header>\n      <input type=\"checkbox\" title=\"Title\" name=\"showTitle6\" checked condition=\"subsectionAmount > 5\">\n      <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubitle6\" checked condition=\"subsectionAmount > 5\">\n      <input type=\"checkbox\" title=\"Text\" name=\"showText6\" checked condition=\"subsectionAmount > 5\">\n      <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons6\" checked condition=\"subsectionAmount > 5\">\n      <input type=\"range\" inline name=\"textWidth6\" title=\"Width\" min=\"4\" max=\"12\" value=\"6\" step=\"1\" condition=\"subsectionAmount > 5\">\n      <select title=\"Content Align\" name=\"contentAlign6\" condition=\"subsectionAmount > 5\">\n        <option value=\"justify-content-start\">Left</option>\n        <option value=\"justify-content-center\" selected>Center</option>\n        <option value=\"justify-content-end\">Right</option>\n      </select>\n      <select title=\"Text Align\" name=\"textAlign6\" condition=\"subsectionAmount > 5\">\n        <option value=\"left\">Left</option>\n        <option value=\"center\" selected>Center</option>\n        <option value=\"right\">Right</option>\n      </select>\n      <fieldset type=\"background\" name=\"bg6\">\n        <input type=\"image\" title=\"Image\" value=\"https://r.mobirisesite.com/201592/assets/images/mbr-1665x1080.jpg?v=1NGTLS\" condition=\"subsectionAmount > 5\" selected=\"selected\">\n        <input type=\"color\" title=\"Color & Gradient\" value=\"#4479d9\" condition=\"subsectionAmount > 5\">\n      </fieldset>\n      <input type=\"checkbox\" title=\"Gradient Bg\" name=\"gradientBg6\" condition=\"bg6.type == 'color'\" checked>\n      <input type=\"color\" title=\"Color 2\" name=\"gradient6Color2\" value=\"#e43f3f\" condition=\"gradientBg6 && bg6.type == 'color'\">\n      <input type=\"range\" inline name=\"gradientAngle\" title=\"Gradient Angle\" min=\"0\" max=\"360\" step=\"1\" value=\"300\" condition=\"gradientBg6 && bg6.type == 'color'\">\n      <input type=\"checkbox\" title=\"Overlay\" name=\"overlay6\" condition=\"bg6.type !== 'color' &amp;&amp; subsectionAmount > 5\" checked=\"checked\">\n      <input type=\"color\" title=\"Overlay Color\" name=\"overlay6Color1\" value=\"#4479d9\" condition=\"overlay6 &amp;&amp; bg6.type !== 'color' &amp;&amp; subsectionAmount > 5\">\n      <input type=\"checkbox\" title=\"Gradient Overlay\" name=\"gradientOverlay6\" condition=\"overlay6 &amp;&amp; bg6.type !== 'color' &amp;&amp; subsectionAmount > 5\" checked=\"\">\n      <input type=\"color\" title=\"Overlay Color 2\" name=\"overlay6Color2\" value=\"#e43f3f\" condition=\"overlay6 &amp;&amp; bg6.type !== 'color' &amp;&amp; gradientOverlay6 &amp;&amp; subsectionAmount > 5\">\n      <input type=\"range\" title=\"Gradient Angle\" name=\"gradientOverlayAngle6\" min=\"0\" max=\"360\" value=\"300\" step=\"1\" condition=\"overlay6 &amp;&amp; bg6.type !== 'color' &amp;&amp; gradientOverlay6 &amp;&amp; subsectionAmount > 5\">\n      <input type=\"range\" title=\"Opacity\" name=\"overlay6Opacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.6\" condition=\"overlay6 &amp;&amp; bg6.type !== 'color' &amp;&amp; subsectionAmount > 5\">\n    </mbr-parameters>\n    <div class=\"mbr-fullscreen w-100 sticky-top {{contentAlign1}} subsection\" data-bg-video=\"{{bg1.type == 'video' && bg1.value.url}}\">\n      <div class=\"w-100 h-100 position-absolute overlay1\" style=\"z-index:0\" mbr-if=\"overlay1\"></div>\n      <div class=\"col-12 col-lg-{{textWidth1}}\" style=\"z-index:1\">\n        <h1 class=\"mbr-section-title mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-1\" mbr-if=\"showTitle1\"><b>Batusov Alexander&nbsp;</b></h1>\n        <h2 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-2\" mbr-if=\"showSubitle1\"><b>Arts</b></h2>\n        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-7\" mbr-if=\"showText1\" data-app-selector=\".mbr-text, .mbr-section-btn\">An NFT artist, presents:</p>\n        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn mt-3\" mbr-if=\"showButtons1\"><a class=\"btn btn-secondary\" href=\"index.html#design-block-FsKBNEmkek\" data-app-placeholder=\"Введите Текст\"><span class=\"mobi-mbri mobi-mbri-down mbr-iconfont mbr-iconfont-btn\"><br></span>Girlcoin.eth NFT collection<br></a></div>\n      </div>\n    </div>\n    <div class=\"mbr-fullscreen w-100 sticky-top {{contentAlign2}} subsection\" mbr-if=\"subsectionAmount > 1\">\n      <div class=\"w-100 h-100 position-absolute overlay2\" mbr-if=\"overlay2\"></div>\n      <div class=\"col-12 col-lg-{{textWidth2}}\">\n        <h1 class=\"mbr-section-title mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-1\" mbr-if=\"showTitle2\"><b>Second Subsection Title</b></h1>\n        <h2 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-2\" mbr-if=\"showSubitle2\"><b>MobiWise</b> • Cool stuff for Mobirise !</h2>\n        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-7\" mbr-if=\"showText2\" data-app-selector=\".mbr-text, .mbr-section-btn\">Custom your project with not native functions.</p>\n        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn mt-3\" mbr-if=\"showButtons2\"><a class=\"btn btn-secondary\" href=\"https://www.buymeacoffee.com/MobiWise\" target=\"_blank\" data-app-placeholder=\"Введите Текст\"><span class=\"mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn\"></span>Buy Me A Coffee</a></div>\n      </div>\n    </div>\n    <div class=\"mbr-fullscreen w-100 sticky-top {{contentAlign3}} subsection\" mbr-if=\"subsectionAmount > 2\">\n      <div class=\"w-100 h-100 position-absolute overlay3\" mbr-if=\"overlay3\"></div>\n      <div class=\"col-12 col-lg-{{textWidth3}}\">\n        <h1 class=\"mbr-section-title mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-1\" mbr-if=\"showTitle3\"><b>Third Subsection Title</b></h1>\n        <h2 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-2\" mbr-if=\"showSubitle3\"><b>MobiWise</b> • Cool stuff for Mobirise !</h2>\n        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-7\" mbr-if=\"showText3\" data-app-selector=\".mbr-text, .mbr-section-btn\">Custom your project with not native functions.</p>\n        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn mt-3\" mbr-if=\"showButtons3\"><a class=\"btn btn-secondary\" href=\"https://www.buymeacoffee.com/MobiWise\" target=\"_blank\" data-app-placeholder=\"Type Text\"><span class=\"mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn\"></span>Buy Me A Coffee</a></div>\n      </div>\n    </div>\n    <div class=\"mbr-fullscreen w-100 sticky-top {{contentAlign4}} subsection\" mbr-if=\"subsectionAmount > 3\">\n      <div class=\"w-100 h-100 position-absolute overlay4\" mbr-if=\"overlay4\"></div>\n      <div class=\"col-12 col-lg-{{textWidth4}}\">\n        <h1 class=\"mbr-section-title mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-1\" mbr-if=\"showTitle4\"><b>Fourth Subsection Title</b></h1>\n        <h2 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-2\" mbr-if=\"showSubitle4\"><b>MobiWise</b> • Cool stuff for Mobirise !</h2>\n        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-7\" mbr-if=\"showText4\" data-app-selector=\".mbr-text, .mbr-section-btn\">Custom your project with not native functions.</p>\n        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn mt-3\" mbr-if=\"showButtons4\"><a class=\"btn btn-secondary\" href=\"https://www.buymeacoffee.com/MobiWise\" target=\"_blank\" data-app-placeholder=\"Type Text\"><span class=\"mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn\"></span>Buy Me A Coffee</a></div>\n      </div>\n    </div>\n    <div class=\"mbr-fullscreen w-100 sticky-top {{contentAlign5}} subsection\" mbr-if=\"subsectionAmount > 4\">\n      <div class=\"w-100 h-100 position-absolute overlay5\" mbr-if=\"overlay5\"></div>\n      <div class=\"col-12 col-lg-{{textWidth5}}\">\n        <h1 class=\"mbr-section-title mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-1\" mbr-if=\"showTitle5\"><b>Fifth Subsection Title</b></h1>\n        <h2 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-2\" mbr-if=\"showSubitle5\"><b>MobiWise</b> • Cool stuff for Mobirise !</h2>\n        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-7\" mbr-if=\"showText5\" data-app-selector=\".mbr-text, .mbr-section-btn\">Custom your project with not native functions.</p>\n        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn mt-3\" mbr-if=\"showButtons5\"><a class=\"btn btn-secondary\" href=\"https://www.buymeacoffee.com/MobiWise\" target=\"_blank\" data-app-placeholder=\"Type Text\"><span class=\"mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn\"></span>Buy Me A Coffee</a></div>\n      </div>\n    </div>\n    <div class=\"mbr-fullscreen w-100 sticky-top {{contentAlign6}} subsection\" mbr-if=\"subsectionAmount > 5\">\n      <div class=\"w-100 h-100 position-absolute overlay6\" mbr-if=\"overlay6\"></div>\n      <div class=\"col-12 col-lg-{{textWidth6}} mwcont\">\n        <h1 class=\"mbr-section-title mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-1\" mbr-if=\"showTitle6\"><b>Sixth Subsection Title</b></h1>\n        <h2 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-2\" mbr-if=\"showSubitle6\"><b>MobiWise</b> • Cool stuff for Mobirise !</h2>\n        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-7\" mbr-if=\"showText6\" data-app-selector=\".mbr-text, .mbr-section-btn\">Custom your project with not native functions.</p>\n        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn mt-3\" mbr-if=\"showButtons6\"><a class=\"btn btn-secondary\" href=\"https://www.buymeacoffee.com/MobiWise\" target=\"_blank\" data-app-placeholder=\"Type Text\"><span class=\"mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn\"></span>Buy Me A Coffee</a></div>\n      </div>\n    </div>\n  </section>",
+          "_cid": "FsKBNEmkek",
+          "_anchor": "design-bloc2",
           "_protectedParams": [],
           "_global": false,
           "_once": false,

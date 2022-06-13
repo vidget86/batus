@@ -679,103 +679,73 @@ body {
 a {
   transition: color 0.6s;
 }
-.cid-3NDBIEmbUS {
-  padding-top: 0px;
-  padding-bottom: 15px;
-  background: linear-gradient(to bottom right, #000000, #000000);
+.cid-FsKBNEmkek .subsection {
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  background-position: center !important;
 }
-.cid-3NDBIEmbUS .text-color {
+.cid-FsKBNEmkek .subsection:nth-child(1) {
+  background-image: url("../../../assets/images/qmphhjtzbuvspvtg5wey9yp5czkipjptoffzbmwjtrmqdm-2000x1333.jpeg");
+  text-align: center !important;
+}
+.cid-FsKBNEmkek .subsection:nth-child(1) .overlay1 {
+  z-index: -1;
+  background: linear-gradient(347deg, #ed4200, #088ec5);
+  opacity: 0.2;
+}
+.cid-FsKBNEmkek .subsection:nth-child(2) {
+  background-image: url("../../../assets/images/knwy2cxz-lc-2000x1334.jpeg");
+  text-align: left !important;
+}
+.cid-FsKBNEmkek .subsection:nth-child(2) .overlay2 {
+  z-index: -1;
+  background: linear-gradient(203deg, #e56b10, #0062ff);
+  opacity: 0.2;
+}
+.cid-FsKBNEmkek .subsection:nth-child(3) {
+  background-image: url("../../../assets/images/moy6feypr98-2000x1125.jpg");
+  text-align: right !important;
+}
+.cid-FsKBNEmkek .subsection:nth-child(3) .overlay3 {
+  z-index: -1;
+  background: linear-gradient(120deg, #4479d9, #e43f3f);
+  opacity: 0.2;
+}
+.cid-FsKBNEmkek .subsection:nth-child(4) {
+  background-image: url("https://r.mobirisesite.com/201592/assets/images/mbr-1920x1277.jpg?v=1NGTLS");
+  text-align: right !important;
+}
+.cid-FsKBNEmkek .subsection:nth-child(4) .overlay4 {
+  z-index: -1;
+  background: linear-gradient(180deg, #4479d9, #e43f3f);
+  opacity: 0.6;
+}
+.cid-FsKBNEmkek .subsection:nth-child(5) {
+  background-image: url("https://r.mobirisesite.com/201592/assets/images/mbr-1920x1297.jpg?v=1NGTLS");
+  text-align: left !important;
+}
+.cid-FsKBNEmkek .subsection:nth-child(5) .overlay5 {
+  z-index: -1;
+  background: linear-gradient(240deg, #4479d9, #e43f3f);
+  opacity: 0.6;
+}
+.cid-FsKBNEmkek .subsection:nth-child(6) {
+  background-image: url("https://r.mobirisesite.com/201592/assets/images/mbr-1665x1080.jpg?v=1NGTLS");
+  text-align: center !important;
+}
+.cid-FsKBNEmkek .subsection:nth-child(6) .overlay6 {
+  z-index: -1;
+  background: linear-gradient(300deg, #4479d9, #e43f3f);
+  opacity: 0.6;
+}
+.cid-FsKBNEmkek .mbr-section-title {
+  color: #ffffff;
+  text-align: center;
+}
+.cid-FsKBNEmkek .mbr-section-subtitle {
   color: #ffffff;
 }
-.cid-3NDBIEmbUS * {
-  margin: 0;
-  padding: 0;
-  outline: none;
-  border: none;
-  box-sizing: border-box;
-}
-.cid-3NDBIEmbUS *:before,
-.cid-3NDBIEmbUS *:after {
-  box-sizing: border-box;
-}
-.cid-3NDBIEmbUS html,
-.cid-3NDBIEmbUS body {
-  min-height: 100%;
-}
-.cid-3NDBIEmbUS h1 {
-  display: table;
-  margin: 5% auto 0;
-  text-transform: uppercase;
-  font-family: 'Times Roman', sans-serif;
-  font-size: 3em;
-  font-weight: 400;
-  color: #fff;
-  text-shadow: 0 1px white, 0 1px black;
-}
-.cid-3NDBIEmbUS .container {
-  margin: 4% auto;
-  width: 210px;
-  height: 140px;
-  position: relative;
-  perspective: 1000px;
-}
-.cid-3NDBIEmbUS #carousel {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transform-style: preserve-3d;
-  animation: rotation 20s infinite linear;
-}
-.cid-3NDBIEmbUS #carousel:hover {
-  animation-play-state: paused;
-}
-.cid-3NDBIEmbUS #carousel figure {
-  display: block;
-  position: absolute;
-  width: 90%;
-  height: 50%px;
-  left: 10px;
-  top: 10px;
-  background: black;
-  overflow: hidden;
-  border: solid 3px black;
-}
-.cid-3NDBIEmbUS #carousel figure:nth-child(1) {
-  transform: rotateY(0deg) translateZ(288px);
-}
-.cid-3NDBIEmbUS #carousel figure:nth-child(2) {
-  transform: rotateY(40deg) translateZ(288px);
-}
-.cid-3NDBIEmbUS #carousel figure:nth-child(3) {
-  transform: rotateY(80deg) translateZ(288px);
-}
-.cid-3NDBIEmbUS #carousel figure:nth-child(4) {
-  transform: rotateY(120deg) translateZ(288px);
-}
-.cid-3NDBIEmbUS #carousel figure:nth-child(5) {
-  transform: rotateY(160deg) translateZ(288px);
-}
-.cid-3NDBIEmbUS #carousel figure:nth-child(6) {
-  transform: rotateY(200deg) translateZ(288px);
-}
-.cid-3NDBIEmbUS #carousel figure:nth-child(7) {
-  transform: rotateY(240deg) translateZ(288px);
-}
-.cid-3NDBIEmbUS #carousel figure:nth-child(8) {
-  transform: rotateY(280deg) translateZ(288px);
-}
-.cid-3NDBIEmbUS #carousel figure:nth-child(9) {
-  transform: rotateY(320deg) translateZ(288px);
-}
-.cid-3NDBIEmbUS img:hover {
-  -webkit-filter: grayscale(0);
-  transform: scale(1.2, 1.2);
-}
-@keyframes rotation {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(360deg);
-  }
+.cid-FsKBNEmkek .mbr-text,
+.cid-FsKBNEmkek .mbr-section-btn {
+  color: #ffffff;
 }
