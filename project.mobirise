@@ -30,13 +30,13 @@
         "isScrollToTopButton": true
       },
       "additionalSetColors": [
+        "#4f5b77",
         "#0062ff",
         "#e56b10",
         "#e58b10",
         "#088ec5",
         "#e52222",
-        "#066fff",
-        "#ed4200"
+        "#066fff"
       ]
     },
     "path": "@PROJECT_PATH@",
@@ -77,224 +77,278 @@
         {
           "alias": false,
           "_styles": {
-            ".subsection": {
-              "background-attachment": "fixed !important",
-              "background-size": "cover !important",
-              "background-position": "center !important"
-            },
-            ".subsection:nth-child(1)": {
-              "& when (@bg1-type = \"image\")": {
-                "background-image": "url(@bg1-value)"
+            "padding-top": "(@paddingTop * 15px)",
+            "padding-bottom": "(@paddingBottom * 15px)",
+            "& when (@bg-type = 'color')": {
+              "& when not (@transp)": {
+                "background": "linear-gradient(@angle * 1deg, @bg-value, @color2)"
               },
-              "& when (@bg1-type = \"color\")": {
-                "& when not (@gradientBg1)": {
-                  "background-color": "@bg1-value"
-                },
-                "& when (@gradientBg1)": {
-                  "background-image": "linear-gradient(~\"@{gradientAngle}deg\", @bg1-value, @gradient1Color2) !important"
-                }
-              },
-              "& when (@textAlign1 = 'left')": {
-                "text-align": "left !important"
-              },
-              "& when (@textAlign1 = 'center')": {
-                "text-align": "center !important"
-              },
-              "& when (@textAlign1 = 'right')": {
-                "text-align": "right !important"
-              },
-              ".overlay1": {
-                "z-index": "-1",
-                "& when not (@gradientOverlay1)": {
-                  "background": "@overlay1Color1",
-                  "opacity": "@overlay1Opacity"
-                },
-                "& when (@gradientOverlay1)": {
-                  "background": "linear-gradient(~\"@{gradientOverlayAngle1}deg\", @overlay1Color1, @overlay1Color2)",
-                  "opacity": "@overlay1Opacity"
-                }
+              "& when (@transp)": {
+                "background": "transparent"
               }
             },
-            ".subsection:nth-child(2)": {
-              "& when (@bg2-type = \"image\")": {
-                "background-image": "url(@bg2-value)"
+            "& when (@bg-type = 'image')": {
+              "background-image": "url(@bg-value)"
+            },
+            "@media (max-width: 991px)": {
+              "min-width": "200px"
+            },
+            ".mbr-text": {
+              "color": "#767676",
+              "text-align": "left"
+            },
+            ".mbr-section-text": {
+              "min-width": "300px",
+              "text-align": "left"
+            },
+            "@keyframes spin": {
+              "from": {
+                "transform": "rotateZ(0)"
               },
-              "& when (@bg2-type = \"color\")": {
-                "& when not (@gradientBg2)": {
-                  "background-color": "@bg2-value"
-                },
-                "& when (@gradientBg2)": {
-                  "background-image": "linear-gradient(~\"@{gradientAngle}deg\", @bg2-value, @gradient2Color2) !important"
-                }
-              },
-              "& when (@textAlign2 = 'left')": {
-                "text-align": "left !important"
-              },
-              "& when (@textAlign2 = 'center')": {
-                "text-align": "center !important"
-              },
-              "& when (@textAlign2 = 'right')": {
-                "text-align": "right !important"
-              },
-              ".overlay2": {
-                "z-index": "-1",
-                "& when not (@gradientOverlay2)": {
-                  "background": "@overlay2Color1",
-                  "opacity": "@overlay2Opacity"
-                },
-                "& when (@gradientOverlay2)": {
-                  "background": "linear-gradient(~\"@{gradientOverlayAngle2}deg\", @overlay2Color1, @overlay2Color2)",
-                  "opacity": "@overlay2Opacity"
-                }
+              "to": {
+                "transform": "rotateZ(1turn)"
               }
             },
-            ".subsection:nth-child(3)": {
-              "& when (@bg3-type = \"image\")": {
-                "background-image": "url(@bg3-value)"
+            ".green-audio-player": {
+              "width": "(@PlaySize * 1px)",
+              "@media (max-width: (@Breakpoint * 1px))": {
+                "width": "300px"
               },
-              "& when (@bg3-type = \"color\")": {
-                "& when not (@gradientBg3)": {
-                  "background-color": "@bg3-value"
-                },
-                "& when (@gradientBg3)": {
-                  "background-image": "linear-gradient(~\"@{gradientAngle}deg\", @bg3-value, @gradient3Color2) !important"
-                }
-              },
-              "& when (@textAlign3 = 'left')": {
-                "text-align": "left !important"
-              },
-              "& when (@textAlign3 = 'center')": {
-                "text-align": "center !important"
-              },
-              "& when (@textAlign3 = 'right')": {
-                "text-align": "right !important"
-              },
-              ".overlay3": {
-                "z-index": "-1",
-                "& when not (@gradientOverlay3)": {
-                  "background": "@overlay3Color1",
-                  "opacity": "@overlay3Opacity"
-                },
-                "& when (@gradientOverlay3)": {
-                  "background": "linear-gradient(~\"@{gradientOverlayAngle3}deg\", @overlay3Color1, @overlay3Color2)",
-                  "opacity": "@overlay3Opacity"
-                }
+              "min-width": "300px",
+              "height": "56px",
+              "box-shadow": "0 4px 16px 0 rgba(0, 0, 0, 0.07)",
+              "display": "flex !important",
+              "justify-content": "space-between",
+              "align-items": "center",
+              "padding-left": "24px",
+              "padding-right": "24px",
+              "border-radius": "(@PlayRad * 1px)",
+              "user-select": "none",
+              "background-color": "@PlayerCol",
+              "box-sizing": "border-box",
+              "outline": "none",
+              "margin-left": "15px",
+              "margin-right": "15px"
+            },
+            ".green-audio-player.player-accessible .play-pause-btn:hover, .green-audio-player.player-accessible .controls:hover, .green-audio-player.player-accessible .volume__button:hover, .green-audio-player.player-accessible .volume__controls:hover, .green-audio-player.player-accessible .download:hover": {
+              "outline": "dotted 1px #999"
+            },
+            ".green-audio-player svg, .green-audio-player img": {
+              "display": "block"
+            },
+            ".green-audio-player .holder": {
+              "position": "relative"
+            },
+            ".green-audio-player .holder .loading .loading__spinner": {
+              "position": "absolute",
+              "left": "-3px",
+              "bottom": "2px",
+              "width": "16px",
+              "height": "16px",
+              "border": "2px solid #b0b0b0",
+              "border-right-color": "rgba(0, 0, 0, 0)",
+              "border-radius": "50%",
+              "animation": "spin 0.4s linear infinite"
+            },
+            ".green-audio-player .holder .play-pause-btn": {
+              "visibility": "hidden",
+              "cursor": "pointer",
+              "outline": "none",
+              "fill": "@PlPaCol"
+            },
+            ".green-audio-player .holder .play-pause-btn:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player .slider": {
+              "flex-grow": "1",
+              "background-color": "@PinCol2",
+              "cursor": "pointer",
+              "position": "relative"
+            },
+            ".green-audio-player .slider .gap-progress": {
+              "background-color": "@SliderCol",
+              "border-radius": "inherit",
+              "position": "absolute",
+              "pointer-events": "none"
+            },
+            "& when (@Dotonoff)": {
+              ".green-audio-player .slider .gap-progress .pin": {
+                "height": "16px",
+                "width": "16px",
+                "border-radius": "8px",
+                "background-color": "@ProgressCol",
+                "position": "absolute",
+                "pointer-events": "all",
+                "box-shadow": "0 1px 1px 0 rgba(0, 0, 0, 0.32)"
               }
             },
-            ".subsection:nth-child(4)": {
-              "& when (@bg4-type = \"image\")": {
-                "background-image": "url(@bg4-value)"
-              },
-              "& when (@bg4-type = \"color\")": {
-                "& when not (@gradientBg4)": {
-                  "background-color": "@bg4-value"
-                },
-                "& when (@gradientBg4)": {
-                  "background-image": "linear-gradient(~\"@{gradientAngle}deg\", @bg4-value, @gradient4Color2) !important"
-                }
-              },
-              "& when (@textAlign4 = 'left')": {
-                "text-align": "left !important"
-              },
-              "& when (@textAlign4 = 'center')": {
-                "text-align": "center !important"
-              },
-              "& when (@textAlign4 = 'right')": {
-                "text-align": "right !important"
-              },
-              ".overlay4": {
-                "z-index": "-1",
-                "& when not (@gradientOverlay4)": {
-                  "background": "@overlay4Color1",
-                  "opacity": "@overlay4Opacity"
-                },
-                "& when (@gradientOverlay4)": {
-                  "background": "linear-gradient(~\"@{gradientOverlayAngle4}deg\", @overlay4Color1, @overlay4Color2)",
-                  "opacity": "@overlay4Opacity"
-                }
+            "& when not (@Dotonoff)": {
+              ".green-audio-player .slider .gap-progress .pin": {
+                "height": "16px",
+                "width": "16px",
+                "border-radius": "8px",
+                "background-color": "transparent",
+                "position": "absolute",
+                "pointer-events": "all"
               }
             },
-            ".subsection:nth-child(5)": {
-              "& when (@bg5-type = \"image\")": {
-                "background-image": "url(@bg5-value)"
-              },
-              "& when (@bg5-type = \"color\")": {
-                "& when not (@gradientBg5)": {
-                  "background-color": "@bg5-value"
-                },
-                "& when (@gradientBg5)": {
-                  "background-image": "linear-gradient(~\"@{gradientAngle}deg\", @bg5-value, @gradient5Color2) !important"
-                }
-              },
-              "& when (@textAlign5 = 'left')": {
-                "text-align": "left !important"
-              },
-              "& when (@textAlign5 = 'center')": {
-                "text-align": "center !important"
-              },
-              "& when (@textAlign5 = 'right')": {
-                "text-align": "right !important"
-              },
-              ".overlay5": {
-                "z-index": "-1",
-                "& when not (@gradientOverlay5)": {
-                  "background": "@overlay5Color1",
-                  "opacity": "@overlay5Opacity"
-                },
-                "& when (@gradientOverlay5)": {
-                  "background": "linear-gradient(~\"@{gradientOverlayAngle5}deg\", @overlay5Color1, @overlay5Color2)",
-                  "opacity": "@overlay5Opacity"
-                }
+            ".green-audio-player .slider .gap-progress .pin::after": {
+              "content": "\"\"",
+              "display": "block",
+              "background": "rgba(0, 0, 0, 0)",
+              "width": "200%",
+              "height": "200%",
+              "margin-left": "-50%",
+              "margin-top": "-50%",
+              "border-radius": "50%"
+            },
+            ".green-audio-player .controls": {
+              "font-family": "\"Roboto\", sans-serif",
+              "font-size": "16px",
+              "line-height": "18px",
+              "color": "@TimeCol",
+              "display": "flex",
+              "flex-grow": "1",
+              "justify-content": "space-between",
+              "align-items": "center",
+              "margin-left": "15px",
+              "margin-right": "15px",
+              "outline": "none"
+            },
+            ".green-audio-player .controls .controls__slider": {
+              "margin-left": "16px",
+              "margin-right": "16px",
+              "border-radius": "2px",
+              "height": "4px"
+            },
+            ".green-audio-player .controls .controls__slider .controls__progress": {
+              "width": "0",
+              "height": "100%"
+            },
+            ".green-audio-player .controls .controls__slider .controls__progress .progress__pin": {
+              "right": "-8px",
+              "top": "-6px"
+            },
+            ".green-audio-player .controls span": {
+              "cursor": "default"
+            },
+            ".green-audio-player .controls:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player .volume": {
+              "position": "relative"
+            },
+            "& when (@Volumeoff)": {
+              ".green-audio-player .volume_test": {
+                "height": "24px",
+                "width": "24px"
               }
             },
-            ".subsection:nth-child(6)": {
-              "& when (@bg6-type = \"image\")": {
-                "background-image": "url(@bg6-value)"
-              },
-              "& when (@bg6-type = \"color\")": {
-                "& when not (@gradientBg6)": {
-                  "background-color": "@bg6-value"
-                },
-                "& when (@gradientBg6)": {
-                  "background-image": "linear-gradient(~\"@{gradientAngle}deg\", @bg6-value, @gradient6Color2) !important"
-                }
-              },
-              "& when (@textAlign6 = 'left')": {
-                "text-align": "left !important"
-              },
-              "& when (@textAlign6 = 'center')": {
-                "text-align": "center !important"
-              },
-              "& when (@textAlign6 = 'right')": {
-                "text-align": "right !important"
-              },
-              ".overlay6": {
-                "z-index": "-1",
-                "& when not (@gradientOverlay6)": {
-                  "background": "@overlay6Color1",
-                  "opacity": "@overlay6Opacity"
-                },
-                "& when (@gradientOverlay6)": {
-                  "background": "linear-gradient(~\"@{gradientOverlayAngle6}deg\", @overlay6Color1, @overlay6Color2)",
-                  "opacity": "@overlay6Opacity"
-                }
+            "& when not (@Volumeoff)": {
+              ".green-audio-player .volume_test": {
+                "height": "0px",
+                "width": "0px"
               }
             },
-            ".mbr-section-title": {
-              "color": "#ffffff",
-              "text-align": "center"
+            ".green-audio-player .download__link": {
+              "fill": "@DownCol"
+            },
+            ".green-audio-player .volume .volume__button": {
+              "cursor": "pointer",
+              "outline": "none",
+              "fill": "@VolCol"
+            },
+            ".green-audio-player .volume .volume__button:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player .volume .volume__button.open path": {
+              "fill": "@VolumeCol"
+            },
+            ".green-audio-player .volume .volume__controls": {
+              "width": "30px",
+              "height": "135px",
+              "background-color": "@VolColBack",
+              "opacity": "@VolBckCol",
+              "border-radius": "7px",
+              "position": "absolute",
+              "left": "-3px",
+              "bottom": "52px",
+              "flex-direction": "column",
+              "align-items": "center",
+              "display": "flex",
+              "z-index": "2",
+              "outline": "none"
+            },
+            ".green-audio-player .volume .volume__controls .volume__slider": {
+              "margin-top": "12px",
+              "margin-bottom": "12px",
+              "width": "6px",
+              "border-radius": "3px"
+            },
+            ".green-audio-player .volume .volume__controls .volume__slider .volume__progress": {
+              "bottom": "0",
+              "height": "100%",
+              "width": "6px"
+            },
+            ".green-audio-player .volume .volume__controls .volume__slider .volume__progress .volume__pin": {
+              "left": "-5px",
+              "top": "-8px"
+            },
+            ".green-audio-player .volume .volume__controls:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player .volume .volume__controls.hidden": {
+              "display": "none"
+            },
+            ".green-audio-player .volume .volume__controls.top": {
+              "bottom": "52px",
+              "left": "-3px"
+            },
+            ".green-audio-player .volume .volume__controls.middle": {
+              "bottom": "-54px",
+              "left": "54px"
+            },
+            ".green-audio-player .volume .volume__controls.bottom": {
+              "bottom": "-164px",
+              "left": "-3px"
+            },
+            ".green-audio-player .download": {
+              "display": "none",
+              "margin-left": "16px",
+              "cursor": "pointer",
+              "outline": "none",
+              "fill": "@DownCol"
+            },
+            ".green-audio-player .download:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player:focus": {
+              "outline": "none"
+            },
+            ".message__offscreen": {
+              "border": "0",
+              "clip": "rect(1px, 1px, 1px, 1px)",
+              "clip-path": "inset(50%)",
+              "height": "1px",
+              "margin": "-1px",
+              "overflow": "hidden",
+              "padding": "0",
+              "position": "absolute",
+              "width": "1px",
+              "word-wrap": "normal"
+            },
+            ".hidden": {
+              "display": "none"
             },
             ".mbr-section-subtitle": {
-              "color": "#ffffff"
-            },
-            ".mbr-text, .mbr-section-btn": {
-              "color": "#ffffff"
+              "min-width": "500px",
+              "text-align": "left"
             }
           },
           "_name": "design-block",
-          "_customHTML": "<section data-bs-version=\"5.1\" class=\"mbr-fullscreen d-flex flex-column p-0\">\n    <!--\n      ███╗   ███╗ ██████╗ ██████╗ ██╗██╗    ██╗██╗███████╗███████╗\n      ████╗ ████║██╔═══██╗██╔══██╗██║██║    ██║██║██╔════╝██╔════╝\n      ██╔████╔██║██║   ██║██████╔╝██║██║ █╗ ██║██║███████╗█████╗  \n      ██║╚██╔╝██║██║   ██║██╔══██╗██║██║███╗██║██║╚════██║██╔══╝  \n      ██║ ╚═╝ ██║╚██████╔╝██████╔╝██║╚███╔███╔╝██║███████║███████╗\n      ╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚═╝ ╚══╝╚══╝ ╚═╝╚══════╝╚══════╝\n      MobiWise Block. If you like it, don't forget to buy me a coffee.\n      https://www.buymeacoffee.com/MobiWise\n      Version: 0.1 | update : 2022/03/24\n      -->\n    <mbr-parameters>\n      <header>- - - General - - -</header>\n      <select title=\"Subsection Amount\" name=\"subsectionAmount\">\n        <option value=\"2\">2</option>\n        <option value=\"3\" selected>3</option>\n        <option value=\"4\">4</option>\n        <option value=\"5\">5</option>\n        <option value=\"6\">6</option>\n      </select>\n      <header>- - - Subsection 1 - - -</header>\n      <input type=\"checkbox\" title=\"Title\" name=\"showTitle1\" checked>\n      <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubitle1\" checked>\n      <input type=\"checkbox\" title=\"Text\" name=\"showText1\" checked>\n      <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons1\" checked>\n      <input type=\"range\" inline name=\"textWidth1\" title=\"Width\" min=\"4\" max=\"12\" value=\"6\" step=\"1\">\n      <select title=\"Content Align\" name=\"contentAlign1\">\n        <option value=\"justify-content-start\">Left</option>\n        <option value=\"justify-content-center\" selected>Center</option>\n        <option value=\"justify-content-end\">Right</option>\n      </select>\n      <select title=\"Text Align\" name=\"textAlign1\">\n        <option value=\"left\">Left</option>\n        <option value=\"center\" selected>Center</option>\n        <option value=\"right\">Right</option>\n      </select>\n      <fieldset type=\"background\" name=\"bg1\">\n        <input type=\"image\" title=\"Image\" value=\"@PROJECT_PATH@/assets/images/qmphhjtzbuvspvtg5wey9yp5czkipjptoffzbmwjtrmqdm-2000x1333.jpeg\" selected>\n        <input type=\"color\" title=\"Color & Gradient\" value=\"#4479d9\">\n        <input type=\"video\" title=\"Video\" value=\"https://youtu.be/bmgiCS-eOes\">\n      </fieldset>\n      <input type=\"checkbox\" title=\"Gradient Bg\" name=\"gradientBg1\" condition=\"bg1.type == 'color'\" checked>\n      <input type=\"color\" title=\"Color 2\" name=\"gradient1Color2\" value=\"#e43f3f\" condition=\"gradientBg1 && bg1.type == 'color'\">\n      <input type=\"range\" inline name=\"gradientAngle\" title=\"Gradient Angle\" min=\"0\" max=\"360\" step=\"1\" value=\"0\" condition=\"gradientBg1 && bg1.type == 'color'\">\n      <input type=\"checkbox\" title=\"Overlay\" name=\"overlay1\" condition=\"bg1.type !== 'color'\" checked>\n      <input type=\"color\" title=\"Overlay Color\" name=\"overlay1Color1\" value=\"#ed4200\" condition=\"overlay1 && bg1.type !== 'color'\">\n      <input type=\"checkbox\" title=\"Gradient Overlay\" name=\"gradientOverlay1\" condition=\"overlay1 && bg1.type !== 'color'\" checked>\n      <input type=\"color\" title=\"Overlay Color 2\" name=\"overlay1Color2\" value=\"#088ec5\" condition=\"overlay1 && bg1.type !== 'color' && gradientOverlay1\">\n      <input type=\"range\" title=\"Gradient Angle\" name=\"gradientOverlayAngle1\" min=\"0\" max=\"360\" value=\"347\" step=\"1\" condition=\"overlay1 && bg1.type !== 'color' && gradientOverlay1\">\n      <input type=\"range\" title=\"Opacity\" name=\"overlay1Opacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.2\" condition=\"overlay1 && bg1.type !== 'color'\">\n      <header>- - - Subsection 2 - - -</header>\n      <input type=\"checkbox\" title=\"Title\" name=\"showTitle2\" checked>\n      <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubitle2\" checked>\n      <input type=\"checkbox\" title=\"Text\" name=\"showText2\" checked>\n      <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons2\" checked>\n      <input type=\"range\" inline name=\"textWidth2\" title=\"Width\" min=\"4\" max=\"12\" value=\"6\" step=\"1\">\n      <select title=\"Content Align\" name=\"contentAlign2\">\n        <option value=\"justify-content-start\">Left</option>\n        <option value=\"justify-content-center\">Center</option>\n        <option value=\"justify-content-end\" selected>Right</option>\n      </select>\n      <select title=\"Text Align\" name=\"textAlign2\">\n        <option value=\"left\" selected>Left</option>\n        <option value=\"center\">Center</option>\n        <option value=\"right\">Right</option>\n      </select>\n      <fieldset type=\"background\" name=\"bg2\">\n        <input type=\"image\" title=\"Image\" value=\"@PROJECT_PATH@/assets/images/knwy2cxz-lc-2000x1334.jpeg\" selected>\n        <input type=\"color\" title=\"Color & Gradient\" value=\"#4479d9\">\n      </fieldset>\n      <input type=\"checkbox\" title=\"Gradient Bg\" name=\"gradientBg2\" condition=\"bg2.type == 'color'\" checked>\n      <input type=\"color\" title=\"Color 2\" name=\"gradient2Color2\" value=\"#e43f3f\" condition=\"gradientBg2 && bg2.type == 'color'\">\n      <input type=\"range\" inline name=\"gradientAngle\" title=\"Gradient Angle\" min=\"0\" max=\"360\" step=\"1\" value=\"60\" condition=\"gradientBg2 && bg2.type == 'color'\">\n      <input type=\"checkbox\" title=\"Overlay\" name=\"overlay2\" condition=\"bg2.type !== 'color'\" checked>\n      <input type=\"color\" title=\"Overlay Color\" name=\"overlay2Color1\" value=\"#e56b10\" condition=\"overlay2 && bg2.type !== 'color'\">\n      <input type=\"checkbox\" title=\"Gradient Overlay\" name=\"gradientOverlay2\" condition=\"overlay2 && bg2.type !== 'color'\" checked>\n      <input type=\"color\" title=\"Overlay Color 2\" name=\"overlay2Color2\" value=\"#0062ff\" condition=\"overlay2 && bg2.type !== 'color' && gradientOverlay2\">\n      <input type=\"range\" title=\"Gradient Angle\" name=\"gradientOverlayAngle2\" min=\"0\" max=\"360\" value=\"203\" step=\"1\" condition=\"overlay2 && bg2.type !== 'color' && gradientOverlay2\">\n      <input type=\"range\" title=\"Opacity\" name=\"overlay2Opacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.2\" condition=\"overlay2 && bg2.type !== 'color'\">\n      <header>- - - Subsection 3 - - -</header>\n      <input type=\"checkbox\" title=\"Title\" name=\"showTitle3\" checked condition=\"subsectionAmount > 2\">\n      <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubitle3\" checked condition=\"subsectionAmount > 2\">\n      <input type=\"checkbox\" title=\"Text\" name=\"showText3\" checked condition=\"subsectionAmount > 2\">\n      <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons3\" condition=\"subsectionAmount > 2\" checked=\"checked\">\n      <input type=\"range\" inline name=\"textWidth3\" title=\"Width\" min=\"4\" max=\"12\" value=\"6\" step=\"1\" condition=\"subsectionAmount > 2\">\n      <select title=\"Content Align\" name=\"contentAlign3\" condition=\"subsectionAmount > 2\">\n        <option value=\"justify-content-start\" selected>Left</option>\n        <option value=\"justify-content-center\">Center</option>\n        <option value=\"justify-content-end\">Right</option>\n      </select>\n      <select title=\"Text Align\" name=\"textAlign3\" condition=\"subsectionAmount > 2\">\n        <option value=\"left\">Left</option>\n        <option value=\"center\">Center</option>\n        <option value=\"right\" selected>Right</option>\n      </select>\n      <fieldset type=\"background\" name=\"bg3\">\n        <input type=\"image\" title=\"Image\" value=\"@PROJECT_PATH@/assets/images/moy6feypr98-2000x1125.jpg\" selected condition=\"subsectionAmount > 2\">\n        <input type=\"color\" title=\"Color & Gradient\" value=\"#4479d9\" condition=\"subsectionAmount > 2\">\n      </fieldset>\n      <input type=\"checkbox\" title=\"Gradient Bg\" name=\"gradientBg3\" condition=\"bg3.type == 'color'\" checked>\n      <input type=\"color\" title=\"Color 2\" name=\"gradient3Color2\" value=\"#e43f3f\" condition=\"gradientBg3 && bg3.type == 'color'\">\n      <input type=\"range\" inline name=\"gradientAngle\" title=\"Gradient Angle\" min=\"0\" max=\"360\" step=\"1\" value=\"120\" condition=\"gradientBg3 && bg3.type == 'color'\">\n      <input type=\"checkbox\" title=\"Overlay\" name=\"overlay3\" condition=\"bg3.type !== 'color' &amp;&amp; subsectionAmount > 2\" checked=\"checked\">\n      <input type=\"color\" title=\"Overlay Color\" name=\"overlay3Color1\" value=\"#4479d9\" condition=\"overlay3 &amp;&amp; bg3.type !== 'color' &amp;&amp; subsectionAmount > 2\">\n      <input type=\"checkbox\" title=\"Gradient Overlay\" name=\"gradientOverlay3\" condition=\"overlay3 &amp;&amp; bg3.type !== 'color' &amp;&amp; subsectionAmount > 2\" checked=\"\">\n      <input type=\"color\" title=\"Overlay Color 2\" name=\"overlay3Color2\" value=\"#e43f3f\" condition=\"overlay3 &amp;&amp; bg3.type !== 'color' &amp;&amp; gradientOverlay3 &amp;&amp; subsectionAmount > 2\">\n      <input type=\"range\" title=\"Gradient Angle\" name=\"gradientOverlayAngle3\" min=\"0\" max=\"360\" value=\"120\" step=\"1\" condition=\"overlay3 &amp;&amp; bg3.type !== 'color' &amp;&amp; gradientOverlay3 &amp;&amp; subsectionAmount > 2\">\n      <input type=\"range\" title=\"Opacity\" name=\"overlay3Opacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.2\" condition=\"overlay3 &amp;&amp; bg3.type !== 'color' &amp;&amp; subsectionAmount > 2\">\n      <header>- - - Subsection 4 - - -</header>\n      <input type=\"checkbox\" title=\"Title\" name=\"showTitle4\" checked condition=\"subsectionAmount > 3\">\n      <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubitle4\" checked condition=\"subsectionAmount > 3\">\n      <input type=\"checkbox\" title=\"Text\" name=\"showText4\" checked condition=\"subsectionAmount > 3\">\n      <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons4\" checked condition=\"subsectionAmount > 3\">\n      <input type=\"range\" inline name=\"textWidth4\" title=\"Width\" min=\"4\" max=\"12\" value=\"6\" step=\"1\" condition=\"subsectionAmount > 3\">\n      <select title=\"Content Align\" name=\"contentAlign4\" condition=\"subsectionAmount > 3\">\n        <option value=\"justify-content-start\">Left</option>\n        <option value=\"justify-content-center\">Center</option>\n        <option value=\"justify-content-end\" selected>Right</option>\n      </select>\n      <select title=\"Text Align\" name=\"textAlign4\" condition=\"subsectionAmount > 3\">\n        <option value=\"left\">Left</option>\n        <option value=\"center\">Center</option>\n        <option value=\"right\" selected>Right</option>\n      </select>\n      <fieldset type=\"background\" name=\"bg4\">\n        <input type=\"image\" title=\"Image\" value=\"https://r.mobirisesite.com/201592/assets/images/mbr-1920x1277.jpg?v=1NGTLS\" selected condition=\"subsectionAmount > 3\">\n        <input type=\"color\" title=\"Color & Gradient\" value=\"#4479d9\" condition=\"subsectionAmount > 3\">\n      </fieldset>\n      <input type=\"checkbox\" title=\"Gradient Bg\" name=\"gradientBg4\" condition=\"bg4.type == 'color'\" checked>\n      <input type=\"color\" title=\"Color 2\" name=\"gradient4Color2\" value=\"#e43f3f\" condition=\"gradientBg4 && bg4.type == 'color'\">\n      <input type=\"range\" inline name=\"gradientAngle\" title=\"Gradient Angle\" min=\"0\" max=\"360\" step=\"1\" value=\"180\" condition=\"gradientBg4 && bg4.type == 'color'\">\n      <input type=\"checkbox\" title=\"Overlay\" name=\"overlay4\" condition=\"bg4.type !== 'color' &amp;&amp; subsectionAmount > 3\" checked=\"checked\">\n      <input type=\"color\" title=\"Overlay Color\" name=\"overlay4Color1\" value=\"#4479d9\" condition=\"overlay4 &amp;&amp; bg4.type !== 'color' &amp;&amp; subsectionAmount > 3\">\n      <input type=\"checkbox\" title=\"Gradient Overlay\" name=\"gradientOverlay4\" condition=\"overlay4 &amp;&amp; bg4.type !== 'color' &amp;&amp; subsectionAmount > 3\" checked=\"\">\n      <input type=\"color\" title=\"Overlay Color 2\" name=\"overlay4Color2\" value=\"#e43f3f\" condition=\"overlay4 &amp;&amp; bg4.type !== 'color' &amp;&amp; gradientOverlay4 &amp;&amp; subsectionAmount > 3\">\n      <input type=\"range\" title=\"Gradient Angle\" name=\"gradientOverlayAngle4\" min=\"0\" max=\"360\" value=\"180\" step=\"1\" condition=\"overlay4 &amp;&amp; bg4.type !== 'color' &amp;&amp; gradientOverlay4 &amp;&amp; subsectionAmount > 3\">\n      <input type=\"range\" title=\"Opacity\" name=\"overlay4Opacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.6\" condition=\"overlay4 &amp;&amp; bg4.type !== 'color' &amp;&amp; subsectionAmount > 3\">\n      <header>- - - Subsection 5 - - -</header>\n      <input type=\"checkbox\" title=\"Title\" name=\"showTitle5\" checked condition=\"subsectionAmount > 4\">\n      <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubitle5\" checked condition=\"subsectionAmount > 4\">\n      <input type=\"checkbox\" title=\"Text\" name=\"showText5\" checked condition=\"subsectionAmount > 4\">\n      <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons5\" checked condition=\"subsectionAmount > 4\">\n      <input type=\"range\" inline name=\"textWidth5\" title=\"Width\" min=\"4\" max=\"12\" value=\"6\" step=\"1\" condition=\"subsectionAmount > 4\">\n      <select title=\"Content Align\" name=\"contentAlign5\" condition=\"subsectionAmount > 4\">\n        <option value=\"justify-content-start\" selected>Left</option>\n        <option value=\"justify-content-center\">Center</option>\n        <option value=\"justify-content-end\">Right</option>\n      </select>\n      <select title=\"Text Align\" name=\"textAlign5\" condition=\"subsectionAmount > 4\">\n        <option value=\"left\" selected>Left</option>\n        <option value=\"center\">Center</option>\n        <option value=\"right\">Right</option>\n      </select>\n      <fieldset type=\"background\" name=\"bg5\">\n        <input type=\"image\" title=\"Image\" value=\"https://r.mobirisesite.com/201592/assets/images/mbr-1920x1297.jpg?v=1NGTLS\" selected condition=\"subsectionAmount > 4\">\n        <input type=\"color\" title=\"Color & Gradient\" value=\"#4479d9\" condition=\"subsectionAmount > 4\">\n      </fieldset>\n      <input type=\"checkbox\" title=\"Gradient Bg\" name=\"gradientBg5\" condition=\"bg5.type == 'color'\" checked>\n      <input type=\"color\" title=\"Color 2\" name=\"gradient5Color2\" value=\"#e43f3f\" condition=\"gradientBg5 && bg5.type == 'color'\">\n      <input type=\"range\" inline name=\"gradientAngle\" title=\"Gradient Angle\" min=\"0\" max=\"360\" step=\"1\" value=\"240\" condition=\"gradientBg5 && bg5.type == 'color'\">\n      <input type=\"checkbox\" title=\"Overlay\" name=\"overlay5\" condition=\"bg5.type !== 'color' &amp;&amp; subsectionAmount > 4\" checked=\"checked\">\n      <input type=\"color\" title=\"Overlay Color\" name=\"overlay5Color1\" value=\"#4479d9\" condition=\"overlay5 &amp;&amp; bg5.type !== 'color' &amp;&amp; subsectionAmount > 4\">\n      <input type=\"checkbox\" title=\"Gradient Overlay\" name=\"gradientOverlay5\" condition=\"overlay5 &amp;&amp; bg5.type !== 'color' &amp;&amp; subsectionAmount > 4\" checked=\"\">\n      <input type=\"color\" title=\"Overlay Color 2\" name=\"overlay5Color2\" value=\"#e43f3f\" condition=\"overlay5 &amp;&amp; bg5.type !== 'color' &amp;&amp; gradientOverlay5 &amp;&amp; subsectionAmount > 4\">\n      <input type=\"range\" title=\"Gradient Angle\" name=\"gradientOverlayAngle5\" min=\"0\" max=\"360\" value=\"240\" step=\"1\" condition=\"overlay5 &amp;&amp; bg5.type !== 'color' &amp;&amp; gradientOverlay5 &amp;&amp; subsectionAmount > 4\">\n      <input type=\"range\" title=\"Opacity\" name=\"overlay5Opacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.6\" condition=\"overlay5 &amp;&amp; bg5.type !== 'color' &amp;&amp; subsectionAmount > 4\">\n      <header>- - - Subsection 6 - - -</header>\n      <input type=\"checkbox\" title=\"Title\" name=\"showTitle6\" checked condition=\"subsectionAmount > 5\">\n      <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubitle6\" checked condition=\"subsectionAmount > 5\">\n      <input type=\"checkbox\" title=\"Text\" name=\"showText6\" checked condition=\"subsectionAmount > 5\">\n      <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons6\" checked condition=\"subsectionAmount > 5\">\n      <input type=\"range\" inline name=\"textWidth6\" title=\"Width\" min=\"4\" max=\"12\" value=\"6\" step=\"1\" condition=\"subsectionAmount > 5\">\n      <select title=\"Content Align\" name=\"contentAlign6\" condition=\"subsectionAmount > 5\">\n        <option value=\"justify-content-start\">Left</option>\n        <option value=\"justify-content-center\" selected>Center</option>\n        <option value=\"justify-content-end\">Right</option>\n      </select>\n      <select title=\"Text Align\" name=\"textAlign6\" condition=\"subsectionAmount > 5\">\n        <option value=\"left\">Left</option>\n        <option value=\"center\" selected>Center</option>\n        <option value=\"right\">Right</option>\n      </select>\n      <fieldset type=\"background\" name=\"bg6\">\n        <input type=\"image\" title=\"Image\" value=\"https://r.mobirisesite.com/201592/assets/images/mbr-1665x1080.jpg?v=1NGTLS\" condition=\"subsectionAmount > 5\" selected=\"selected\">\n        <input type=\"color\" title=\"Color & Gradient\" value=\"#4479d9\" condition=\"subsectionAmount > 5\">\n      </fieldset>\n      <input type=\"checkbox\" title=\"Gradient Bg\" name=\"gradientBg6\" condition=\"bg6.type == 'color'\" checked>\n      <input type=\"color\" title=\"Color 2\" name=\"gradient6Color2\" value=\"#e43f3f\" condition=\"gradientBg6 && bg6.type == 'color'\">\n      <input type=\"range\" inline name=\"gradientAngle\" title=\"Gradient Angle\" min=\"0\" max=\"360\" step=\"1\" value=\"300\" condition=\"gradientBg6 && bg6.type == 'color'\">\n      <input type=\"checkbox\" title=\"Overlay\" name=\"overlay6\" condition=\"bg6.type !== 'color' &amp;&amp; subsectionAmount > 5\" checked=\"checked\">\n      <input type=\"color\" title=\"Overlay Color\" name=\"overlay6Color1\" value=\"#4479d9\" condition=\"overlay6 &amp;&amp; bg6.type !== 'color' &amp;&amp; subsectionAmount > 5\">\n      <input type=\"checkbox\" title=\"Gradient Overlay\" name=\"gradientOverlay6\" condition=\"overlay6 &amp;&amp; bg6.type !== 'color' &amp;&amp; subsectionAmount > 5\" checked=\"\">\n      <input type=\"color\" title=\"Overlay Color 2\" name=\"overlay6Color2\" value=\"#e43f3f\" condition=\"overlay6 &amp;&amp; bg6.type !== 'color' &amp;&amp; gradientOverlay6 &amp;&amp; subsectionAmount > 5\">\n      <input type=\"range\" title=\"Gradient Angle\" name=\"gradientOverlayAngle6\" min=\"0\" max=\"360\" value=\"300\" step=\"1\" condition=\"overlay6 &amp;&amp; bg6.type !== 'color' &amp;&amp; gradientOverlay6 &amp;&amp; subsectionAmount > 5\">\n      <input type=\"range\" title=\"Opacity\" name=\"overlay6Opacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.6\" condition=\"overlay6 &amp;&amp; bg6.type !== 'color' &amp;&amp; subsectionAmount > 5\">\n    </mbr-parameters>\n    <div class=\"mbr-fullscreen w-100 sticky-top {{contentAlign1}} subsection\" data-bg-video=\"{{bg1.type == 'video' && bg1.value.url}}\">\n      <div class=\"w-100 h-100 position-absolute overlay1\" style=\"z-index:0\" mbr-if=\"overlay1\"></div>\n      <div class=\"col-12 col-lg-{{textWidth1}}\" style=\"z-index:1\">\n        <h1 class=\"mbr-section-title mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-1\" mbr-if=\"showTitle1\"><b>Batusov Alexander&nbsp;</b></h1>\n        <h2 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-2\" mbr-if=\"showSubitle1\"><b>Arts</b></h2>\n        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-7\" mbr-if=\"showText1\" data-app-selector=\".mbr-text, .mbr-section-btn\">An NFT artist, presents:</p>\n        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn mt-3\" mbr-if=\"showButtons1\"><a class=\"btn btn-secondary\" href=\"index.html#design-block-FsKBNEmkek\" data-app-placeholder=\"Введите Текст\"><span class=\"mobi-mbri mobi-mbri-down mbr-iconfont mbr-iconfont-btn\"><br></span>Girlcoin.eth NFT collection<br></a></div>\n      </div>\n    </div>\n    <div class=\"mbr-fullscreen w-100 sticky-top {{contentAlign2}} subsection\" mbr-if=\"subsectionAmount > 1\">\n      <div class=\"w-100 h-100 position-absolute overlay2\" mbr-if=\"overlay2\"></div>\n      <div class=\"col-12 col-lg-{{textWidth2}}\">\n        <h1 class=\"mbr-section-title mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-1\" mbr-if=\"showTitle2\"><b>Second Subsection Title</b></h1>\n        <h2 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-2\" mbr-if=\"showSubitle2\"><b>MobiWise</b> • Cool stuff for Mobirise !</h2>\n        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-7\" mbr-if=\"showText2\" data-app-selector=\".mbr-text, .mbr-section-btn\">Custom your project with not native functions.</p>\n        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn mt-3\" mbr-if=\"showButtons2\"><a class=\"btn btn-secondary\" href=\"https://www.buymeacoffee.com/MobiWise\" target=\"_blank\" data-app-placeholder=\"Введите Текст\"><span class=\"mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn\"></span>Buy Me A Coffee</a></div>\n      </div>\n    </div>\n    <div class=\"mbr-fullscreen w-100 sticky-top {{contentAlign3}} subsection\" mbr-if=\"subsectionAmount > 2\">\n      <div class=\"w-100 h-100 position-absolute overlay3\" mbr-if=\"overlay3\"></div>\n      <div class=\"col-12 col-lg-{{textWidth3}}\">\n        <h1 class=\"mbr-section-title mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-1\" mbr-if=\"showTitle3\"><b>Third Subsection Title</b></h1>\n        <h2 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-2\" mbr-if=\"showSubitle3\"><b>MobiWise</b> • Cool stuff for Mobirise !</h2>\n        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-7\" mbr-if=\"showText3\" data-app-selector=\".mbr-text, .mbr-section-btn\">Custom your project with not native functions.</p>\n        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn mt-3\" mbr-if=\"showButtons3\"><a class=\"btn btn-secondary\" href=\"https://www.buymeacoffee.com/MobiWise\" target=\"_blank\" data-app-placeholder=\"Type Text\"><span class=\"mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn\"></span>Buy Me A Coffee</a></div>\n      </div>\n    </div>\n    <div class=\"mbr-fullscreen w-100 sticky-top {{contentAlign4}} subsection\" mbr-if=\"subsectionAmount > 3\">\n      <div class=\"w-100 h-100 position-absolute overlay4\" mbr-if=\"overlay4\"></div>\n      <div class=\"col-12 col-lg-{{textWidth4}}\">\n        <h1 class=\"mbr-section-title mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-1\" mbr-if=\"showTitle4\"><b>Fourth Subsection Title</b></h1>\n        <h2 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-2\" mbr-if=\"showSubitle4\"><b>MobiWise</b> • Cool stuff for Mobirise !</h2>\n        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-7\" mbr-if=\"showText4\" data-app-selector=\".mbr-text, .mbr-section-btn\">Custom your project with not native functions.</p>\n        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn mt-3\" mbr-if=\"showButtons4\"><a class=\"btn btn-secondary\" href=\"https://www.buymeacoffee.com/MobiWise\" target=\"_blank\" data-app-placeholder=\"Type Text\"><span class=\"mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn\"></span>Buy Me A Coffee</a></div>\n      </div>\n    </div>\n    <div class=\"mbr-fullscreen w-100 sticky-top {{contentAlign5}} subsection\" mbr-if=\"subsectionAmount > 4\">\n      <div class=\"w-100 h-100 position-absolute overlay5\" mbr-if=\"overlay5\"></div>\n      <div class=\"col-12 col-lg-{{textWidth5}}\">\n        <h1 class=\"mbr-section-title mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-1\" mbr-if=\"showTitle5\"><b>Fifth Subsection Title</b></h1>\n        <h2 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-2\" mbr-if=\"showSubitle5\"><b>MobiWise</b> • Cool stuff for Mobirise !</h2>\n        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-7\" mbr-if=\"showText5\" data-app-selector=\".mbr-text, .mbr-section-btn\">Custom your project with not native functions.</p>\n        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn mt-3\" mbr-if=\"showButtons5\"><a class=\"btn btn-secondary\" href=\"https://www.buymeacoffee.com/MobiWise\" target=\"_blank\" data-app-placeholder=\"Type Text\"><span class=\"mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn\"></span>Buy Me A Coffee</a></div>\n      </div>\n    </div>\n    <div class=\"mbr-fullscreen w-100 sticky-top {{contentAlign6}} subsection\" mbr-if=\"subsectionAmount > 5\">\n      <div class=\"w-100 h-100 position-absolute overlay6\" mbr-if=\"overlay6\"></div>\n      <div class=\"col-12 col-lg-{{textWidth6}} mwcont\">\n        <h1 class=\"mbr-section-title mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-1\" mbr-if=\"showTitle6\"><b>Sixth Subsection Title</b></h1>\n        <h2 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-2\" mbr-if=\"showSubitle6\"><b>MobiWise</b> • Cool stuff for Mobirise !</h2>\n        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-7\" mbr-if=\"showText6\" data-app-selector=\".mbr-text, .mbr-section-btn\">Custom your project with not native functions.</p>\n        <div mbr-buttons mbr-theme-style=\"display-4\" class=\"mbr-section-btn mt-3\" mbr-if=\"showButtons6\"><a class=\"btn btn-secondary\" href=\"https://www.buymeacoffee.com/MobiWise\" target=\"_blank\" data-app-placeholder=\"Type Text\"><span class=\"mobi-mbri mobi-mbri-hot-cup mbr-iconfont mbr-iconfont-btn\"></span>Buy Me A Coffee</a></div>\n      </div>\n    </div>\n  </section>",
-          "_cid": "FsKBNEmkek",
-          "_anchor": "design-bloc2",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"mbr-section content6\" plugins=\"audiobar\" group=\"Zen2cool Blocks\" data-bg-video=\"{{bg.type == 'video'&&bg.value.url}}\" mbr-class=\"{'mbr-parallax-background': bg.parallax}\">\n   \n    <mbr-parameters>\n <header>Player ID</header>\n\t\t <select title=\"Player ID (must be unique in each audio block on page)\" name=\"NumberPlayer\">\n        <option value=\"1\" selected>1</option>\n        <option value=\"2\">2</option>\n         <option value=\"3\">3</option>\n          <option value=\"4\">4</option>\n           <option value=\"5\">5</option>\n           <option value=\"6\">6</option>\n           <option value=\"7\">7</option>\n          <option value=\"8\">8</option>\n           <option value=\"9\">9</option>\n            <option value=\"10\">10</option>\n                       <option value=\"11\">11</option>\n           <option value=\"12\">12</option>\n           <option value=\"13\">13</option>\n          <option value=\"14\">14</option>\n           <option value=\"15\">15</option>\n\n        </select>\n <header>Basic Settings</header>\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"1\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"1\">\n       \n\n        \n <header>Player Config</header>\n        <input type=\"range\" inline title=\"Player Width\" name=\"PlaySize\" min=\"300\" max=\"1000\" step=\"1\" value=\"650\">\n                <input type=\"range\" inline title=\"Player Radius\" name=\"PlayRad\" min=\"0\" max=\"100\" step=\"1\" value=\"4\">\n                                <input type=\"range\" inline title=\"Player Size Breakpoint\" name=\"Breakpoint\" min=\"500\" max=\"1500\" step=\"25\" value=\"1200\">\n        <input type=\"color\" title=\"Player Color\" name=\"PlayerCol\" value=\"#cccccc\">\n        <select title=\"Position\" name=\"Positionpl\">\n        <option value=\"star\" selected>Left</option>\n        <option value=\"center\">Center</option>\n         <option value=\"end\">Right</option>\n        </select>\n       \n        \n       <header>Buttons Color</header>\n        <input type=\"color\" title=\"Play/Pause Button\" name=\"PlPaCol\" value=\"#ffffff\">\n                   <input type=\"checkbox\" title=\"Volume On/Off\" name=\"Volumeoff\" checked>\n         <input type=\"color\" title=\"Volume Button\" name=\"VolCol\" value=\"#ffffff\" condition=\"Volumeoff\">\n\t\t          <input type=\"color\" title=\"Volume Push Color\" name=\"VolumeCol\" value=\"#efefef\" condition=\"Volumeoff\">\n        <input type=\"color\" title=\"Background Volume\" name=\"VolColBack\" value=\"#ffffff\" condition=\"Volumeoff\">\n\t\t<input type=\"range\" inline title=\"Vol Background Opacity\" name=\"VolBckCol\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.5\" condition=\"Volumeoff\">\n        <input type=\"color\" title=\"Progress Color\" name=\"SliderCol\" value=\"#fe732f\">\n        <input type=\"color\" title=\"Slider Color\" name=\"PinCol2\" value=\"#000000\">\n           <input type=\"checkbox\" title=\"Dot On/Off\" name=\"Dotonoff\" checked>\n        <input type=\"color\" title=\"Dot Progress Color\" name=\"ProgressCol\" value=\"#007797\" condition=\"Dotonoff\">\n        <input type=\"color\" title=\"Time Color\" name=\"TimeCol\" value=\"#ffffff\">\n                <header>Download Button</header>  \n        <select title=\"Download Button\" name=\"Downbutton\">\n        <option value=\"player-with-download\" selected>On</option>\n        <option value=\"player\">Off</option>\n        </select>\n         <input type=\"color\" title=\"Download Color\" name=\"DownCol\" value=\"#ffffff\" condition=\"Downbutton == 'player-with-download'\">\n       \n          \n       \n                <header>Audio URL</header>\n            <input type=\"text\" title=\"Audio URL\" name=\"audioSrc\" value=\"https://s3-ushttps://ipfs.io/ipfs/QmUF3RDuS1RrMZ1D7jXNHNmcakZtjkSzkaJ2o3KRMAQtKU?filename=%D0%A1%D0%BB%D0%B5%D0%BF%D1%8B%D0%B5%20%D1%81%D0%BE%D0%BB%D0%B4%D0%B0%D1%82%D1%8B.mp3-west-2.amazonaws.com/s.cdpn.io/355309/Swing_Jazz_Drum.mp3\">\n            <input type=\"checkbox\" title=\"Loop\" name=\"loopoption\">\n            <input type=\"checkbox\" title=\"Autoplay\" name=\"Autoplay\">\n                               <select title=\"Preload\" name=\"PreLoad\">\n        <option value=\"auto\">On</option>\n        <option value=\"metadata\" selected>Metadata</option>\n        </select>  \n <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Background Image\" value=\"../_images/lionaf.jpg\">\n            <input type=\"color\" title=\"Background Color\" value=\"#ffffff\" selected>\n            <input type=\"video\" title=\"Background Video\" value=\"http://www.youtube.com/watch?v=uNCr7NdOJgw\">\n      </fieldset>\n        \n         <input type=\"color\" title=\"Color 2\" name=\"color2\" value=\"#ffffff\" condition=\"bg.type == 'color'\">\n         <input type=\"range\" name=\"angle\" title=\"Angle\" min=\"0\" max=\"270\" value=\"0\" step=\"1\" condition=\"bg.type == 'color'\">\n\t\t <input type=\"checkbox\" title=\"Background Transparent\" name=\"transp\" condition=\"bg.type == 'color'\">\n\t\t\n\t\t\n\t\t        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#232323\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.3\" condition=\"overlay && bg.type !== 'color'\">\n           \n    <!-- End block parameters -->\n    </mbr-parameters>\n          <div class=\"mbr-overlay\" mbr-if=\"overlay&&bg.type !== 'color'\" opacity=\"{{overlayOpacity}}\" bg-color=\"{{overlayColor}}\">\n    </div>\n\n        <div class=\"media-container-row\">\n            <div class=\"col-12 col-md-8\">\n                <div class=\"media-container-row\">\n                        <div class=\"mbr-section-text\">\n                           \n                <h3 data-app-selector=\".mbr-section-subtitle\" class=\"mbr-section-subtitle align-center mbr-light mbr-fonts-style\" mbr-theme-style=\"display-5\">All That Drama</h3>\n\n                            <p class=\"mbr-text mb-0 mbr-fonts-style\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-text\">• Vocalist: Robyn Springer\n<br>• Producer: Joe Carter<br></p>\n                            \n                        </div>\n                    <div class=\"media-content\">\n                       <div class=\"row justify-content-{{Positionpl}}\">\n<div class=\"ready-player-{{NumberPlayer}} {{Downbutton}}\">\n        <audio crossorigin preload=\"PreLoad\" loop=\"{{loopoption}}\" autoplay=\"{{Autoplay}}\">\n            <source src=\"{{audioSrc}}\" type=\"audio/mpeg\">\n            <source src=\"{{audioSrc}}\" type=\"audio/ogg\">\n            <source src=\"{{audioSrc}}\" type=\"audio/wav\">\n           \n        </audio>\n\n\n <script mbr-if=\"NumberPlayer == 1\">\n        document.addEventListener('DOMContentLoaded', function() {\n            GreenAudioPlayer.init({\n                selector: '.player',\n                stopOthersOnPlay: true\n            });\n\n            GreenAudioPlayer.init({\n                selector: '.player-with-download',\n                stopOthersOnPlay: true,\n                showDownloadButton: true,\n                enableKeystrokes: true\n            });\n\n            GreenAudioPlayer.init({\n                selector: '.player-with-accessibility',\n                stopOthersOnPlay: true,\n                enableKeystrokes: true\n            });\n        });\n    </script>\n</div>\n    </div>\n        <div mbr-class=\"{'hidden': isPublish}\">\n<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" width=\"800px\" height=\"267px\" version=\"1.1\" style=\"shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd\" viewBox=\"0 0 800 266.67\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n <g id=\"Plan_x0020_1\">\n  <metadata id=\"CorelCorpID_0Corel-Layer\"></metadata>\n  <rect fill=\"{{PlayerCol}}\" x=\"27.27\" y=\"118.39\" width=\"653.97\" height=\"77.23\"></rect>\n  <rect mbr-if=\"Volumeoff\" fill=\"{{VolColBack}}\" opacity=\"{{VolBckCol}}\" x=\"696.04\" y=\"55.95\" width=\"65.73\" height=\"203.75\"></rect>\n  <polygon fill=\"{{PlPaCol}}\" points=\"77.28,154.27 64.16,163.12 51.05,171.98 51.05,154.27 51.05,136.56 64.16,145.41 \"></polygon>\n  <text x=\"94.71\" y=\"160.77\" fill=\"{{TimeCol}}\">00:00</text>\n  <text x=\"487.29\" y=\"160.77\" fill=\"{{TimeCol}}\">00:00</text>\n  <rect fill=\"{{SliderCol}}\" x=\"147.72\" y=\"152.39\" width=\"156.97\" height=\"3.76\"></rect>\n  <rect fill=\"{{PinCol2}}\" x=\"317.45\" y=\"152.39\" width=\"157.87\" height=\"3.76\"></rect>\n  <circle mbr-if=\"Dotonoff\" fill=\"{{ProgressCol}}\" cx=\"311.75\" cy=\"154.52\" r=\"13.12\"></circle>\n  <polygon mbr-if=\"Volumeoff\" fill=\"{{VolumeCol}}\" points=\"712.37,13.16 728.5,13.16 739.59,5.94 739.62,24.21 739.65,42.48 729.94,35.26 712.37,35.26 \"></polygon>\n  <rect mbr-if=\"Volumeoff\" fill=\"{{SliderCol}}\" transform=\"matrix(2.64845E-14 -0.803535 1 2.12813E-14 726.013 242.808)\" width=\"118.55\" height=\"5.77\"></rect>\n  <rect mbr-if=\"Volumeoff\" fill=\"{{PinCol2}}\" transform=\"matrix(2.64845E-14 -0.57436 1 1.52117E-14 726.013 135.441)\" width=\"118.55\" height=\"5.77\"></rect>\n  <circle mbr-if=\"Dotonoff\" fill=\"{{ProgressCol}}\" cx=\"728.76\" cy=\"139.54\" r=\"13.12\"></circle>\n  <g>\n   <path mbr-if=\"Downbutton == 'player-with-download'\" fill=\"{{DownCol}}\" d=\"M623.81 159.65l0 -25.53 1.07 0 0 25.53 -1.07 0zm0.53 11.01l-5.8 -11.61 11.61 0 -5.81 11.61z\"></path>\n  </g>\n  <polygon mbr-if=\"Volumeoff\" fill=\"{{VolCol}}\" points=\"546.22,142.66 562.35,142.66 573.45,135.44 573.47,153.71 573.5,171.98 563.79,164.76 546.22,164.76 \"></polygon>\n </g>\n</svg>\n</div>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_cid": "vDnL9jssDX",
+          "_anchor": "design-block-vDnL9jssDX",
           "_protectedParams": [],
           "_global": false,
           "_once": false,
