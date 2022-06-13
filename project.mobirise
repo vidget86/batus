@@ -1148,6 +1148,286 @@
           "_global": false,
           "_once": false,
           "_params": {}
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "padding-top": "(@paddingTop * 15px)",
+            "padding-bottom": "(@paddingBottom * 15px)",
+            "& when (@bg-type = 'color')": {
+              "& when not (@transp)": {
+                "background": "linear-gradient(@angle * 1deg, @bg-value, @color2)"
+              },
+              "& when (@transp)": {
+                "background": "transparent"
+              }
+            },
+            "& when (@bg-type = 'image')": {
+              "background-image": "url(@bg-value)"
+            },
+            "@media (max-width: 991px)": {
+              "min-width": "200px"
+            },
+            ".mbr-text": {
+              "color": "#767676",
+              "text-align": "left"
+            },
+            ".mbr-section-text": {
+              "min-width": "300px",
+              "text-align": "left"
+            },
+            "@keyframes spin": {
+              "from": {
+                "transform": "rotateZ(0)"
+              },
+              "to": {
+                "transform": "rotateZ(1turn)"
+              }
+            },
+            ".green-audio-player": {
+              "width": "(@PlaySize * 1px)",
+              "@media (max-width: (@Breakpoint * 1px))": {
+                "width": "300px"
+              },
+              "min-width": "300px",
+              "height": "56px",
+              "box-shadow": "0 4px 16px 0 rgba(0, 0, 0, 0.07)",
+              "display": "flex !important",
+              "justify-content": "space-between",
+              "align-items": "center",
+              "padding-left": "24px",
+              "padding-right": "24px",
+              "border-radius": "(@PlayRad * 1px)",
+              "user-select": "none",
+              "background-color": "@PlayerCol",
+              "box-sizing": "border-box",
+              "outline": "none",
+              "margin-left": "15px",
+              "margin-right": "15px"
+            },
+            ".green-audio-player.player-accessible .play-pause-btn:hover, .green-audio-player.player-accessible .controls:hover, .green-audio-player.player-accessible .volume__button:hover, .green-audio-player.player-accessible .volume__controls:hover, .green-audio-player.player-accessible .download:hover": {
+              "outline": "dotted 1px #999"
+            },
+            ".green-audio-player svg, .green-audio-player img": {
+              "display": "block"
+            },
+            ".green-audio-player .holder": {
+              "position": "relative"
+            },
+            ".green-audio-player .holder .loading .loading__spinner": {
+              "position": "absolute",
+              "left": "-3px",
+              "bottom": "2px",
+              "width": "16px",
+              "height": "16px",
+              "border": "2px solid #b0b0b0",
+              "border-right-color": "rgba(0, 0, 0, 0)",
+              "border-radius": "50%",
+              "animation": "spin 0.4s linear infinite"
+            },
+            ".green-audio-player .holder .play-pause-btn": {
+              "visibility": "hidden",
+              "cursor": "pointer",
+              "outline": "none",
+              "fill": "@PlPaCol"
+            },
+            ".green-audio-player .holder .play-pause-btn:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player .slider": {
+              "flex-grow": "1",
+              "background-color": "@PinCol2",
+              "cursor": "pointer",
+              "position": "relative"
+            },
+            ".green-audio-player .slider .gap-progress": {
+              "background-color": "@SliderCol",
+              "border-radius": "inherit",
+              "position": "absolute",
+              "pointer-events": "none"
+            },
+            "& when (@Dotonoff)": {
+              ".green-audio-player .slider .gap-progress .pin": {
+                "height": "16px",
+                "width": "16px",
+                "border-radius": "8px",
+                "background-color": "@ProgressCol",
+                "position": "absolute",
+                "pointer-events": "all",
+                "box-shadow": "0 1px 1px 0 rgba(0, 0, 0, 0.32)"
+              }
+            },
+            "& when not (@Dotonoff)": {
+              ".green-audio-player .slider .gap-progress .pin": {
+                "height": "16px",
+                "width": "16px",
+                "border-radius": "8px",
+                "background-color": "transparent",
+                "position": "absolute",
+                "pointer-events": "all"
+              }
+            },
+            ".green-audio-player .slider .gap-progress .pin::after": {
+              "content": "\"\"",
+              "display": "block",
+              "background": "rgba(0, 0, 0, 0)",
+              "width": "200%",
+              "height": "200%",
+              "margin-left": "-50%",
+              "margin-top": "-50%",
+              "border-radius": "50%"
+            },
+            ".green-audio-player .controls": {
+              "font-family": "\"Roboto\", sans-serif",
+              "font-size": "16px",
+              "line-height": "18px",
+              "color": "@TimeCol",
+              "display": "flex",
+              "flex-grow": "1",
+              "justify-content": "space-between",
+              "align-items": "center",
+              "margin-left": "15px",
+              "margin-right": "15px",
+              "outline": "none"
+            },
+            ".green-audio-player .controls .controls__slider": {
+              "margin-left": "16px",
+              "margin-right": "16px",
+              "border-radius": "2px",
+              "height": "4px"
+            },
+            ".green-audio-player .controls .controls__slider .controls__progress": {
+              "width": "0",
+              "height": "100%"
+            },
+            ".green-audio-player .controls .controls__slider .controls__progress .progress__pin": {
+              "right": "-8px",
+              "top": "-6px"
+            },
+            ".green-audio-player .controls span": {
+              "cursor": "default"
+            },
+            ".green-audio-player .controls:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player .volume": {
+              "position": "relative"
+            },
+            "& when (@Volumeoff)": {
+              ".green-audio-player .volume_test": {
+                "height": "24px",
+                "width": "24px"
+              }
+            },
+            "& when not (@Volumeoff)": {
+              ".green-audio-player .volume_test": {
+                "height": "0px",
+                "width": "0px"
+              }
+            },
+            ".green-audio-player .download__link": {
+              "fill": "@DownCol"
+            },
+            ".green-audio-player .volume .volume__button": {
+              "cursor": "pointer",
+              "outline": "none",
+              "fill": "@VolCol"
+            },
+            ".green-audio-player .volume .volume__button:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player .volume .volume__button.open path": {
+              "fill": "@VolumeCol"
+            },
+            ".green-audio-player .volume .volume__controls": {
+              "width": "30px",
+              "height": "135px",
+              "background-color": "@VolColBack",
+              "opacity": "@VolBckCol",
+              "border-radius": "7px",
+              "position": "absolute",
+              "left": "-3px",
+              "bottom": "52px",
+              "flex-direction": "column",
+              "align-items": "center",
+              "display": "flex",
+              "z-index": "2",
+              "outline": "none"
+            },
+            ".green-audio-player .volume .volume__controls .volume__slider": {
+              "margin-top": "12px",
+              "margin-bottom": "12px",
+              "width": "6px",
+              "border-radius": "3px"
+            },
+            ".green-audio-player .volume .volume__controls .volume__slider .volume__progress": {
+              "bottom": "0",
+              "height": "100%",
+              "width": "6px"
+            },
+            ".green-audio-player .volume .volume__controls .volume__slider .volume__progress .volume__pin": {
+              "left": "-5px",
+              "top": "-8px"
+            },
+            ".green-audio-player .volume .volume__controls:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player .volume .volume__controls.hidden": {
+              "display": "none"
+            },
+            ".green-audio-player .volume .volume__controls.top": {
+              "bottom": "52px",
+              "left": "-3px"
+            },
+            ".green-audio-player .volume .volume__controls.middle": {
+              "bottom": "-54px",
+              "left": "54px"
+            },
+            ".green-audio-player .volume .volume__controls.bottom": {
+              "bottom": "-164px",
+              "left": "-3px"
+            },
+            ".green-audio-player .download": {
+              "display": "none",
+              "margin-left": "16px",
+              "cursor": "pointer",
+              "outline": "none",
+              "fill": "@DownCol"
+            },
+            ".green-audio-player .download:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player:focus": {
+              "outline": "none"
+            },
+            ".message__offscreen": {
+              "border": "0",
+              "clip": "rect(1px, 1px, 1px, 1px)",
+              "clip-path": "inset(50%)",
+              "height": "1px",
+              "margin": "-1px",
+              "overflow": "hidden",
+              "padding": "0",
+              "position": "absolute",
+              "width": "1px",
+              "word-wrap": "normal"
+            },
+            ".hidden": {
+              "display": "none"
+            },
+            ".mbr-section-subtitle": {
+              "min-width": "500px",
+              "text-align": "left"
+            }
+          },
+          "_name": "design-block",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"mbr-section content6\" plugins=\"audiobar\" group=\"Zen2cool Blocks\" data-bg-video=\"{{bg.type == 'video'&&bg.value.url}}\" mbr-class=\"{'mbr-parallax-background': bg.parallax}\">\n   \n    <mbr-parameters>\n <header>Player ID</header>\n\t\t <select title=\"Player ID (must be unique in each audio block on page)\" name=\"NumberPlayer\">\n        <option value=\"1\">1</option>\n        <option value=\"2\">2</option>\n         <option value=\"3\" selected>3</option>\n          <option value=\"4\">4</option>\n           <option value=\"5\">5</option>\n           <option value=\"6\">6</option>\n           <option value=\"7\">7</option>\n          <option value=\"8\">8</option>\n           <option value=\"9\">9</option>\n            <option value=\"10\">10</option>\n                       <option value=\"11\">11</option>\n           <option value=\"12\">12</option>\n           <option value=\"13\">13</option>\n          <option value=\"14\">14</option>\n           <option value=\"15\">15</option>\n\n        </select>\n <header>Basic Settings</header>\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"1\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"1\">\n       \n\n        \n <header>Player Config</header>\n        <input type=\"range\" inline title=\"Player Width\" name=\"PlaySize\" min=\"300\" max=\"1000\" step=\"1\" value=\"650\">\n                <input type=\"range\" inline title=\"Player Radius\" name=\"PlayRad\" min=\"0\" max=\"100\" step=\"1\" value=\"4\">\n                                <input type=\"range\" inline title=\"Player Size Breakpoint\" name=\"Breakpoint\" min=\"500\" max=\"1500\" step=\"25\" value=\"1200\">\n        <input type=\"color\" title=\"Player Color\" name=\"PlayerCol\" value=\"#cccccc\">\n        <select title=\"Position\" name=\"Positionpl\">\n        <option value=\"star\" selected>Left</option>\n        <option value=\"center\">Center</option>\n         <option value=\"end\">Right</option>\n        </select>\n       \n        \n       <header>Buttons Color</header>\n        <input type=\"color\" title=\"Play/Pause Button\" name=\"PlPaCol\" value=\"#ffffff\">\n                   <input type=\"checkbox\" title=\"Volume On/Off\" name=\"Volumeoff\" checked>\n         <input type=\"color\" title=\"Volume Button\" name=\"VolCol\" value=\"#ffffff\" condition=\"Volumeoff\">\n\t\t          <input type=\"color\" title=\"Volume Push Color\" name=\"VolumeCol\" value=\"#efefef\" condition=\"Volumeoff\">\n        <input type=\"color\" title=\"Background Volume\" name=\"VolColBack\" value=\"#ffffff\" condition=\"Volumeoff\">\n\t\t<input type=\"range\" inline title=\"Vol Background Opacity\" name=\"VolBckCol\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.5\" condition=\"Volumeoff\">\n        <input type=\"color\" title=\"Progress Color\" name=\"SliderCol\" value=\"#fe732f\">\n        <input type=\"color\" title=\"Slider Color\" name=\"PinCol2\" value=\"#000000\">\n           <input type=\"checkbox\" title=\"Dot On/Off\" name=\"Dotonoff\" checked>\n        <input type=\"color\" title=\"Dot Progress Color\" name=\"ProgressCol\" value=\"#007797\" condition=\"Dotonoff\">\n        <input type=\"color\" title=\"Time Color\" name=\"TimeCol\" value=\"#ffffff\">\n                <header>Download Button</header>  \n        <select title=\"Download Button\" name=\"Downbutton\">\n        <option value=\"player-with-download\" selected>On</option>\n        <option value=\"player\">Off</option>\n        </select>\n         <input type=\"color\" title=\"Download Color\" name=\"DownCol\" value=\"#ffffff\" condition=\"Downbutton == 'player-with-download'\">\n       \n          \n       \n                <header>Audio URL</header>\n            <input type=\"text\" title=\"Audio URL\" name=\"audioSrc\" value=\"https://vh242-fm.sweb.ru/files/musichost/demo.mp3\">\n            <input type=\"checkbox\" title=\"Loop\" name=\"loopoption\">\n            <input type=\"checkbox\" title=\"Autoplay\" name=\"Autoplay\">\n                               <select title=\"Preload\" name=\"PreLoad\">\n        <option value=\"auto\">On</option>\n        <option value=\"metadata\" selected>Metadata</option>\n        </select>  \n <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Background Image\" value=\"../_images/lionaf.jpg\">\n            <input type=\"color\" title=\"Background Color\" value=\"#ffffff\" selected>\n            <input type=\"video\" title=\"Background Video\" value=\"http://www.youtube.com/watch?v=uNCr7NdOJgw\">\n      </fieldset>\n        \n         <input type=\"color\" title=\"Color 2\" name=\"color2\" value=\"#ffffff\" condition=\"bg.type == 'color'\">\n         <input type=\"range\" name=\"angle\" title=\"Angle\" min=\"0\" max=\"270\" value=\"0\" step=\"1\" condition=\"bg.type == 'color'\">\n\t\t <input type=\"checkbox\" title=\"Background Transparent\" name=\"transp\" condition=\"bg.type == 'color'\">\n\t\t\n\t\t\n\t\t        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#232323\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.3\" condition=\"overlay && bg.type !== 'color'\">\n           \n    <!-- End block parameters -->\n    </mbr-parameters>\n          <div class=\"mbr-overlay\" mbr-if=\"overlay&&bg.type !== 'color'\" opacity=\"{{overlayOpacity}}\" bg-color=\"{{overlayColor}}\">\n    </div>\n\n        <div class=\"media-container-row\">\n            <div class=\"col-12 col-md-8\">\n                <div class=\"media-container-row\">\n                        <div class=\"mbr-section-text\">\n                           \n                <h3 data-app-selector=\".mbr-section-subtitle\" class=\"mbr-section-subtitle align-center mbr-light mbr-fonts-style\" mbr-theme-style=\"display-5\">All That Drama</h3>\n\n                            <p class=\"mbr-text mb-0 mbr-fonts-style\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-text\">• Vocalist: Robyn Springer\n<br>• Producer: Joe Carter<br></p>\n                            \n                        </div>\n                    <div class=\"media-content\">\n                       <div class=\"row justify-content-{{Positionpl}}\">\n<div class=\"ready-player-{{NumberPlayer}} {{Downbutton}}\">\n        <audio crossorigin preload=\"PreLoad\" loop=\"{{loopoption}}\" autoplay=\"{{Autoplay}}\">\n            <source src=\"{{audioSrc}}\" type=\"audio/mpeg\">\n            <source src=\"{{audioSrc}}\" type=\"audio/ogg\">\n            <source src=\"{{audioSrc}}\" type=\"audio/wav\">\n           \n        </audio>\n\n\n <script mbr-if=\"NumberPlayer == 1\">\n        document.addEventListener('DOMContentLoaded', function() {\n            GreenAudioPlayer.init({\n                selector: '.player',\n                stopOthersOnPlay: true\n            });\n\n            GreenAudioPlayer.init({\n                selector: '.player-with-download',\n                stopOthersOnPlay: true,\n                showDownloadButton: true,\n                enableKeystrokes: true\n            });\n\n            GreenAudioPlayer.init({\n                selector: '.player-with-accessibility',\n                stopOthersOnPlay: true,\n                enableKeystrokes: true\n            });\n        });\n    </script>\n</div>\n    </div>\n        <div mbr-class=\"{'hidden': isPublish}\">\n<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" width=\"800px\" height=\"267px\" version=\"1.1\" style=\"shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd\" viewBox=\"0 0 800 266.67\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n <g id=\"Plan_x0020_1\">\n  <metadata id=\"CorelCorpID_0Corel-Layer\"></metadata>\n  <rect fill=\"{{PlayerCol}}\" x=\"27.27\" y=\"118.39\" width=\"653.97\" height=\"77.23\"></rect>\n  <rect mbr-if=\"Volumeoff\" fill=\"{{VolColBack}}\" opacity=\"{{VolBckCol}}\" x=\"696.04\" y=\"55.95\" width=\"65.73\" height=\"203.75\"></rect>\n  <polygon fill=\"{{PlPaCol}}\" points=\"77.28,154.27 64.16,163.12 51.05,171.98 51.05,154.27 51.05,136.56 64.16,145.41 \"></polygon>\n  <text x=\"94.71\" y=\"160.77\" fill=\"{{TimeCol}}\">00:00</text>\n  <text x=\"487.29\" y=\"160.77\" fill=\"{{TimeCol}}\">00:00</text>\n  <rect fill=\"{{SliderCol}}\" x=\"147.72\" y=\"152.39\" width=\"156.97\" height=\"3.76\"></rect>\n  <rect fill=\"{{PinCol2}}\" x=\"317.45\" y=\"152.39\" width=\"157.87\" height=\"3.76\"></rect>\n  <circle mbr-if=\"Dotonoff\" fill=\"{{ProgressCol}}\" cx=\"311.75\" cy=\"154.52\" r=\"13.12\"></circle>\n  <polygon mbr-if=\"Volumeoff\" fill=\"{{VolumeCol}}\" points=\"712.37,13.16 728.5,13.16 739.59,5.94 739.62,24.21 739.65,42.48 729.94,35.26 712.37,35.26 \"></polygon>\n  <rect mbr-if=\"Volumeoff\" fill=\"{{SliderCol}}\" transform=\"matrix(2.64845E-14 -0.803535 1 2.12813E-14 726.013 242.808)\" width=\"118.55\" height=\"5.77\"></rect>\n  <rect mbr-if=\"Volumeoff\" fill=\"{{PinCol2}}\" transform=\"matrix(2.64845E-14 -0.57436 1 1.52117E-14 726.013 135.441)\" width=\"118.55\" height=\"5.77\"></rect>\n  <circle mbr-if=\"Dotonoff\" fill=\"{{ProgressCol}}\" cx=\"728.76\" cy=\"139.54\" r=\"13.12\"></circle>\n  <g>\n   <path mbr-if=\"Downbutton == 'player-with-download'\" fill=\"{{DownCol}}\" d=\"M623.81 159.65l0 -25.53 1.07 0 0 25.53 -1.07 0zm0.53 11.01l-5.8 -11.61 11.61 0 -5.81 11.61z\"></path>\n  </g>\n  <polygon mbr-if=\"Volumeoff\" fill=\"{{VolCol}}\" points=\"546.22,142.66 562.35,142.66 573.45,135.44 573.47,153.71 573.5,171.98 563.79,164.76 546.22,164.76 \"></polygon>\n </g>\n</svg>\n</div>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_cid": "dq68cJB4zq",
+          "_anchor": "design-block-dq68cJB4zq",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
         }
       ]
     }
