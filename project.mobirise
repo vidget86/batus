@@ -79,211 +79,420 @@
           "_styles": {
             "padding-top": "(@paddingTop * 15px)",
             "padding-bottom": "(@paddingBottom * 15px)",
-            "background-color": "@bgColor",
-            ".mbr-slider .carousel-control": {
-              "background": "#1b1b1b"
+            "& when (@bg-type = 'color')": {
+              "& when not (@transp)": {
+                "background": "linear-gradient(@angle * 1deg, @bg-value, @color2)"
+              },
+              "& when (@transp)": {
+                "background": "transparent"
+              }
             },
-            ".mbr-slider .carousel-control-prev": {
-              "left": "0",
-              "margin-left": "2.5rem"
+            "& when (@bg-type = 'image')": {
+              "background-image": "url(@bg-value)"
             },
-            ".mbr-slider .carousel-control-next": {
-              "right": "0",
-              "margin-right": "2.5rem"
+            "@media (max-width: 991px)": {
+              "min-width": "200px"
             },
-            ".mbr-slider .modal-body .close": {
-              "background": "#1b1b1b"
+            ".mbr-text": {
+              "color": "#767676",
+              "text-align": "left"
             },
-            ".row > .row": {
+            ".mbr-section-text": {
+              "min-width": "300px",
+              "text-align": "left"
+            },
+            "@keyframes spin": {
+              "from": {
+                "transform": "rotateZ(0)"
+              },
+              "to": {
+                "transform": "rotateZ(1turn)"
+              }
+            },
+            ".green-audio-player": {
+              "width": "(@PlaySize * 1px)",
+              "@media (max-width: (@Breakpoint * 1px))": {
+                "width": "300px"
+              },
+              "min-width": "300px",
+              "height": "56px",
+              "box-shadow": "0 4px 16px 0 rgba(0, 0, 0, 0.07)",
+              "display": "flex !important",
+              "justify-content": "space-between",
+              "align-items": "center",
+              "padding-left": "24px",
+              "padding-right": "24px",
+              "border-radius": "(@PlayRad * 1px)",
+              "user-select": "none",
+              "background-color": "@PlayerCol",
+              "box-sizing": "border-box",
+              "outline": "none",
+              "margin-left": "15px",
+              "margin-right": "15px"
+            },
+            ".green-audio-player.player-accessible .play-pause-btn:hover, .green-audio-player.player-accessible .controls:hover, .green-audio-player.player-accessible .volume__button:hover, .green-audio-player.player-accessible .volume__controls:hover, .green-audio-player.player-accessible .download:hover": {
+              "outline": "dotted 1px #999"
+            },
+            ".green-audio-player svg, .green-audio-player img": {
               "display": "block"
             },
-            ".mbr-gallery-item": {
-              "width": "100%"
+            ".green-audio-player .holder": {
+              "position": "relative"
             },
-            ".mbr-gallery-item > div::before": {
-              "content": "''",
+            ".green-audio-player .holder .loading .loading__spinner": {
               "position": "absolute",
-              "left": "0",
-              "top": "0",
-              "width": "100%",
-              "height": "100%",
-              "background": "@overlayColor",
-              "opacity": "0",
-              "-webkit-transition": "0.2s opacity ease-in-out",
-              "transition": "0.2s opacity ease-in-out",
-              "& when (@gradOverlay)": {
-                "background": "linear-gradient(to left, @overlayColor, @overlayColor2) !important"
-              }
+              "left": "-3px",
+              "bottom": "2px",
+              "width": "16px",
+              "height": "16px",
+              "border": "2px solid #b0b0b0",
+              "border-right-color": "rgba(0, 0, 0, 0)",
+              "border-radius": "50%",
+              "animation": "spin 0.4s linear infinite"
             },
-            ".mbr-gallery-item > div": {
-              "position": "relative",
-              "&:hover": {
-                ".mbr-gallery-title::before": {
-                  "background": "transparent !important"
-                },
-                "&:before": {
-                  "opacity": "@overlayOpacity !important"
-                }
-              }
+            ".green-audio-player .holder .play-pause-btn": {
+              "visibility": "hidden",
+              "cursor": "pointer",
+              "outline": "none",
+              "fill": "@PlPaCol"
             },
-            ".mbr-gallery-title": {
-              "font-size": ".9em",
+            ".green-audio-player .holder .play-pause-btn:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player .slider": {
+              "flex-grow": "1",
+              "background-color": "@PinCol2",
+              "cursor": "pointer",
+              "position": "relative"
+            },
+            ".green-audio-player .slider .gap-progress": {
+              "background-color": "@SliderCol",
+              "border-radius": "inherit",
               "position": "absolute",
-              "display": "block",
-              "width": "100%",
-              "bottom": "0",
-              "padding": "1rem",
-              "color": "#fff",
-              "z-index": "2",
-              "&:before": {
-                "content": "\" \"",
-                "width": "100%",
-                "height": "100%",
-                "top": "0",
-                "left": "0",
-                "z-index": "-1",
+              "pointer-events": "none"
+            },
+            "& when (@Dotonoff)": {
+              ".green-audio-player .slider .gap-progress .pin": {
+                "height": "16px",
+                "width": "16px",
+                "border-radius": "8px",
+                "background-color": "@ProgressCol",
                 "position": "absolute",
-                "background": "@overlayColor !important",
-                "opacity": "@overlayOpacity",
-                "-webkit-transition": "0.2s background ease-in-out",
-                "transition": "0.2s background ease-in-out",
-                "& when (@gradOverlay)": {
-                  "background": "linear-gradient(to left, @overlayColor, @overlayColor2) !important"
-                }
-              },
-              "text-align": "center"
+                "pointer-events": "all",
+                "box-shadow": "0 1px 1px 0 rgba(0, 0, 0, 0.32)"
+              }
+            },
+            "& when not (@Dotonoff)": {
+              ".green-audio-player .slider .gap-progress .pin": {
+                "height": "16px",
+                "width": "16px",
+                "border-radius": "8px",
+                "background-color": "transparent",
+                "position": "absolute",
+                "pointer-events": "all"
+              }
+            },
+            ".green-audio-player .slider .gap-progress .pin::after": {
+              "content": "\"\"",
+              "display": "block",
+              "background": "rgba(0, 0, 0, 0)",
+              "width": "200%",
+              "height": "200%",
+              "margin-left": "-50%",
+              "margin-top": "-50%",
+              "border-radius": "50%"
+            },
+            ".green-audio-player .controls": {
+              "font-family": "\"Roboto\", sans-serif",
+              "font-size": "16px",
+              "line-height": "18px",
+              "color": "@TimeCol",
+              "display": "flex",
+              "flex-grow": "1",
+              "justify-content": "space-between",
+              "align-items": "center",
+              "margin-left": "15px",
+              "margin-right": "15px",
+              "outline": "none"
+            },
+            ".green-audio-player .controls .controls__slider": {
+              "margin-left": "16px",
+              "margin-right": "16px",
+              "border-radius": "2px",
+              "height": "4px"
+            },
+            ".green-audio-player .controls .controls__slider .controls__progress": {
+              "width": "0",
+              "height": "100%"
+            },
+            ".green-audio-player .controls .controls__slider .controls__progress .progress__pin": {
+              "right": "-8px",
+              "top": "-6px"
+            },
+            ".green-audio-player .controls span": {
+              "cursor": "default"
+            },
+            ".green-audio-player .controls:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player .volume": {
+              "position": "relative"
+            },
+            "& when (@Volumeoff)": {
+              ".green-audio-player .volume_test": {
+                "height": "24px",
+                "width": "24px"
+              }
+            },
+            "& when not (@Volumeoff)": {
+              ".green-audio-player .volume_test": {
+                "height": "0px",
+                "width": "0px"
+              }
+            },
+            ".green-audio-player .download__link": {
+              "fill": "@DownCol"
+            },
+            ".green-audio-player .volume .volume__button": {
+              "cursor": "pointer",
+              "outline": "none",
+              "fill": "@VolCol"
+            },
+            ".green-audio-player .volume .volume__button:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player .volume .volume__button.open path": {
+              "fill": "@VolumeCol"
+            },
+            ".green-audio-player .volume .volume__controls": {
+              "width": "30px",
+              "height": "135px",
+              "background-color": "@VolColBack",
+              "opacity": "@VolBckCol",
+              "border-radius": "7px",
+              "position": "absolute",
+              "left": "-3px",
+              "bottom": "52px",
+              "flex-direction": "column",
+              "align-items": "center",
+              "display": "flex",
+              "z-index": "2",
+              "outline": "none"
+            },
+            ".green-audio-player .volume .volume__controls .volume__slider": {
+              "margin-top": "12px",
+              "margin-bottom": "12px",
+              "width": "6px",
+              "border-radius": "3px"
+            },
+            ".green-audio-player .volume .volume__controls .volume__slider .volume__progress": {
+              "bottom": "0",
+              "height": "100%",
+              "width": "6px"
+            },
+            ".green-audio-player .volume .volume__controls .volume__slider .volume__progress .volume__pin": {
+              "left": "-5px",
+              "top": "-8px"
+            },
+            ".green-audio-player .volume .volume__controls:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player .volume .volume__controls.hidden": {
+              "display": "none"
+            },
+            ".green-audio-player .volume .volume__controls.top": {
+              "bottom": "52px",
+              "left": "-3px"
+            },
+            ".green-audio-player .volume .volume__controls.middle": {
+              "bottom": "-54px",
+              "left": "54px"
+            },
+            ".green-audio-player .volume .volume__controls.bottom": {
+              "bottom": "-164px",
+              "left": "-3px"
+            },
+            ".green-audio-player .download": {
+              "display": "none",
+              "margin-left": "16px",
+              "cursor": "pointer",
+              "outline": "none",
+              "fill": "@DownCol"
+            },
+            ".green-audio-player .download:focus": {
+              "outline": "none"
+            },
+            ".green-audio-player:focus": {
+              "outline": "none"
+            },
+            ".message__offscreen": {
+              "border": "0",
+              "clip": "rect(1px, 1px, 1px, 1px)",
+              "clip-path": "inset(50%)",
+              "height": "1px",
+              "margin": "-1px",
+              "overflow": "hidden",
+              "padding": "0",
+              "position": "absolute",
+              "width": "1px",
+              "word-wrap": "normal"
+            },
+            ".hidden": {
+              "display": "none"
+            },
+            ".mbr-section-subtitle": {
+              "min-width": "500px",
+              "text-align": "left"
             }
           },
           "_name": "design-block",
-          "_customHTML": "<section data-bs-version=\"5.1\" class=\"mbr-gallery mbr-slider-carousel\" group=\"Sliders & Gallery\" plugins=\"Masonry,BootstrapCarouselSwipe,Gallery,VimeoPlayer,SliderVideo\">\n\n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"9\" step=\"1\" value=\"9\" inline>\n        <input type=\"range\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"9\" step=\"1\" value=\"9\" inline>\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#554346\">\n        <input type=\"checkbox\" title=\"Gradient Overlay\" name=\"gradOverlay\" checked>\n        <input type=\"color\" title=\"Overlay Color 2\" name=\"overlayColor2\" value=\"#45505b\" condition=\"gradOverlay\">\n        <input type=\"range\" title=\"Overlay Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.2\" inline>\n        <input type=\"color\" title=\"Background Color\" name=\"bgColor\" value=\"#ffffff\">\n        \n        <header>Gallery</header>\n        <input type=\"gallery\" subtype=\"flex\" title=\"Gallery\" name=\"gallery\">\n    <!-- End block parameters -->\n    </mbr-parameters>\n\n    <div mbr-class=\"{'container': !fullWidth}\">\n        <div mbr-gallery=\"gallery\" mbr-gallery-spacing=\"3\" mbr-gallery-count=\"3\" mbr-gallery-first-count=\"3\" mbr-gallery-second-count=\"3\" mbr-gallery-third-count=\"4\" mbr-gallery-fourth-count=\"4\" mbr-gallery-show-text mbr-gallery-show-bullets></div>\n    </div>\n\n</section>",
-          "_cid": "7lx5qlxoA9",
-          "_anchor": "design-block-7lx5qlxoA9",
-          "_protectedParams": [
-            "gallery"
-          ],
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"mbr-section content6\" plugins=\"audiobar\" group=\"Zen2cool Blocks\" data-bg-video=\"{{bg.type == 'video'&&bg.value.url}}\" mbr-class=\"{'mbr-parallax-background': bg.parallax}\">\n   \n    <mbr-parameters>\n <header>Player ID</header>\n\t\t <select title=\"Player ID (must be unique in each audio block on page)\" name=\"NumberPlayer\">\n        <option value=\"1\" selected>1</option>\n        <option value=\"2\">2</option>\n         <option value=\"3\">3</option>\n          <option value=\"4\">4</option>\n           <option value=\"5\">5</option>\n           <option value=\"6\">6</option>\n           <option value=\"7\">7</option>\n          <option value=\"8\">8</option>\n           <option value=\"9\">9</option>\n            <option value=\"10\">10</option>\n                       <option value=\"11\">11</option>\n           <option value=\"12\">12</option>\n           <option value=\"13\">13</option>\n          <option value=\"14\">14</option>\n           <option value=\"15\">15</option>\n\n        </select>\n <header>Basic Settings</header>\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"1\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"1\">\n       \n\n        \n <header>Player Config</header>\n        <input type=\"range\" inline title=\"Player Width\" name=\"PlaySize\" min=\"300\" max=\"1000\" step=\"1\" value=\"650\">\n                <input type=\"range\" inline title=\"Player Radius\" name=\"PlayRad\" min=\"0\" max=\"100\" step=\"1\" value=\"4\">\n                                <input type=\"range\" inline title=\"Player Size Breakpoint\" name=\"Breakpoint\" min=\"500\" max=\"1500\" step=\"25\" value=\"1200\">\n        <input type=\"color\" title=\"Player Color\" name=\"PlayerCol\" value=\"#cccccc\">\n        <select title=\"Position\" name=\"Positionpl\">\n        <option value=\"star\" selected>Left</option>\n        <option value=\"center\">Center</option>\n         <option value=\"end\">Right</option>\n        </select>\n       \n        \n       <header>Buttons Color</header>\n        <input type=\"color\" title=\"Play/Pause Button\" name=\"PlPaCol\" value=\"#ffffff\">\n                   <input type=\"checkbox\" title=\"Volume On/Off\" name=\"Volumeoff\" checked>\n         <input type=\"color\" title=\"Volume Button\" name=\"VolCol\" value=\"#ffffff\" condition=\"Volumeoff\">\n\t\t          <input type=\"color\" title=\"Volume Push Color\" name=\"VolumeCol\" value=\"#efefef\" condition=\"Volumeoff\">\n        <input type=\"color\" title=\"Background Volume\" name=\"VolColBack\" value=\"#ffffff\" condition=\"Volumeoff\">\n\t\t<input type=\"range\" inline title=\"Vol Background Opacity\" name=\"VolBckCol\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.5\" condition=\"Volumeoff\">\n        <input type=\"color\" title=\"Progress Color\" name=\"SliderCol\" value=\"#fe732f\">\n        <input type=\"color\" title=\"Slider Color\" name=\"PinCol2\" value=\"#000000\">\n           <input type=\"checkbox\" title=\"Dot On/Off\" name=\"Dotonoff\" checked>\n        <input type=\"color\" title=\"Dot Progress Color\" name=\"ProgressCol\" value=\"#007797\" condition=\"Dotonoff\">\n        <input type=\"color\" title=\"Time Color\" name=\"TimeCol\" value=\"#ffffff\">\n                <header>Download Button</header>  \n        <select title=\"Download Button\" name=\"Downbutton\">\n        <option value=\"player-with-download\" selected>On</option>\n        <option value=\"player\">Off</option>\n        </select>\n         <input type=\"color\" title=\"Download Color\" name=\"DownCol\" value=\"#ffffff\" condition=\"Downbutton == 'player-with-download'\">\n       \n          \n       \n                <header>Audio URL</header>\n            <input type=\"text\" title=\"Audio URL\" name=\"audioSrc\" value=\"https://vh242-fm.sweb.ru/files/musichost/%D0%A1%D0%BB%D0%B5%D0%BF%D1%8B%D0%B5%20%D1%81%D0%BE%D0%BB%D0%B4%D0%B0%D1%82%D1%8B.mp3\">\n            <input type=\"checkbox\" title=\"Loop\" name=\"loopoption\">\n            <input type=\"checkbox\" title=\"Autoplay\" name=\"Autoplay\">\n                               <select title=\"Preload\" name=\"PreLoad\">\n        <option value=\"auto\">On</option>\n        <option value=\"metadata\" selected>Metadata</option>\n        </select>  \n <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Background Image\" value=\"../_images/lionaf.jpg\">\n            <input type=\"color\" title=\"Background Color\" value=\"#ffffff\" selected>\n            <input type=\"video\" title=\"Background Video\" value=\"http://www.youtube.com/watch?v=uNCr7NdOJgw\">\n      </fieldset>\n        \n         <input type=\"color\" title=\"Color 2\" name=\"color2\" value=\"#ffffff\" condition=\"bg.type == 'color'\">\n         <input type=\"range\" name=\"angle\" title=\"Angle\" min=\"0\" max=\"270\" value=\"0\" step=\"1\" condition=\"bg.type == 'color'\">\n\t\t <input type=\"checkbox\" title=\"Background Transparent\" name=\"transp\" condition=\"bg.type == 'color'\">\n\t\t\n\t\t\n\t\t        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#232323\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.3\" condition=\"overlay && bg.type !== 'color'\">\n           \n    <!-- End block parameters -->\n    </mbr-parameters>\n          <div class=\"mbr-overlay\" mbr-if=\"overlay&&bg.type !== 'color'\" opacity=\"{{overlayOpacity}}\" bg-color=\"{{overlayColor}}\">\n    </div>\n\n        <div class=\"media-container-row\">\n            <div class=\"col-12 col-md-8\">\n                <div class=\"media-container-row\">\n                        <div class=\"mbr-section-text\">\n                           \n                <h3 data-app-selector=\".mbr-section-subtitle\" class=\"mbr-section-subtitle align-center mbr-light mbr-fonts-style\" mbr-theme-style=\"display-5\">All That Drama</h3>\n\n                            <p class=\"mbr-text mb-0 mbr-fonts-style\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-text\">• Vocalist: Robyn Springer\n<br>• Producer: Joe Carter<br></p>\n                            \n                        </div>\n                    <div class=\"media-content\">\n                       <div class=\"row justify-content-{{Positionpl}}\">\n<div class=\"ready-player-{{NumberPlayer}} {{Downbutton}}\">\n        <audio crossorigin preload=\"PreLoad\" loop=\"{{loopoption}}\" autoplay=\"{{Autoplay}}\">\n            <source src=\"{{audioSrc}}\" type=\"audio/mpeg\">\n            <source src=\"{{audioSrc}}\" type=\"audio/ogg\">\n            <source src=\"{{audioSrc}}\" type=\"audio/wav\">\n           \n        </audio>\n\n\n <script mbr-if=\"NumberPlayer == 1\">\n        document.addEventListener('DOMContentLoaded', function() {\n            GreenAudioPlayer.init({\n                selector: '.player',\n                stopOthersOnPlay: true\n            });\n\n            GreenAudioPlayer.init({\n                selector: '.player-with-download',\n                stopOthersOnPlay: true,\n                showDownloadButton: true,\n                enableKeystrokes: true\n            });\n\n            GreenAudioPlayer.init({\n                selector: '.player-with-accessibility',\n                stopOthersOnPlay: true,\n                enableKeystrokes: true\n            });\n        });\n    </script>\n</div>\n    </div>\n        <div mbr-class=\"{'hidden': isPublish}\">\n<svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" width=\"800px\" height=\"267px\" version=\"1.1\" style=\"shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd\" viewBox=\"0 0 800 266.67\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n <g id=\"Plan_x0020_1\">\n  <metadata id=\"CorelCorpID_0Corel-Layer\"></metadata>\n  <rect fill=\"{{PlayerCol}}\" x=\"27.27\" y=\"118.39\" width=\"653.97\" height=\"77.23\"></rect>\n  <rect mbr-if=\"Volumeoff\" fill=\"{{VolColBack}}\" opacity=\"{{VolBckCol}}\" x=\"696.04\" y=\"55.95\" width=\"65.73\" height=\"203.75\"></rect>\n  <polygon fill=\"{{PlPaCol}}\" points=\"77.28,154.27 64.16,163.12 51.05,171.98 51.05,154.27 51.05,136.56 64.16,145.41 \"></polygon>\n  <text x=\"94.71\" y=\"160.77\" fill=\"{{TimeCol}}\">00:00</text>\n  <text x=\"487.29\" y=\"160.77\" fill=\"{{TimeCol}}\">00:00</text>\n  <rect fill=\"{{SliderCol}}\" x=\"147.72\" y=\"152.39\" width=\"156.97\" height=\"3.76\"></rect>\n  <rect fill=\"{{PinCol2}}\" x=\"317.45\" y=\"152.39\" width=\"157.87\" height=\"3.76\"></rect>\n  <circle mbr-if=\"Dotonoff\" fill=\"{{ProgressCol}}\" cx=\"311.75\" cy=\"154.52\" r=\"13.12\"></circle>\n  <polygon mbr-if=\"Volumeoff\" fill=\"{{VolumeCol}}\" points=\"712.37,13.16 728.5,13.16 739.59,5.94 739.62,24.21 739.65,42.48 729.94,35.26 712.37,35.26 \"></polygon>\n  <rect mbr-if=\"Volumeoff\" fill=\"{{SliderCol}}\" transform=\"matrix(2.64845E-14 -0.803535 1 2.12813E-14 726.013 242.808)\" width=\"118.55\" height=\"5.77\"></rect>\n  <rect mbr-if=\"Volumeoff\" fill=\"{{PinCol2}}\" transform=\"matrix(2.64845E-14 -0.57436 1 1.52117E-14 726.013 135.441)\" width=\"118.55\" height=\"5.77\"></rect>\n  <circle mbr-if=\"Dotonoff\" fill=\"{{ProgressCol}}\" cx=\"728.76\" cy=\"139.54\" r=\"13.12\"></circle>\n  <g>\n   <path mbr-if=\"Downbutton == 'player-with-download'\" fill=\"{{DownCol}}\" d=\"M623.81 159.65l0 -25.53 1.07 0 0 25.53 -1.07 0zm0.53 11.01l-5.8 -11.61 11.61 0 -5.81 11.61z\"></path>\n  </g>\n  <polygon mbr-if=\"Volumeoff\" fill=\"{{VolCol}}\" points=\"546.22,142.66 562.35,142.66 573.45,135.44 573.47,153.71 573.5,171.98 563.79,164.76 546.22,164.76 \"></polygon>\n </g>\n</svg>\n</div>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_cid": "2QOWq6Nrfv",
+          "_anchor": "design-block-2QOWq6Nrfv",
+          "_protectedParams": [],
           "_global": false,
           "_once": false,
-          "_params": {
-            "gallery": [
-              {
-                "tags": "Творческий",
-                "videoPreview": "@THEME_PATH@/components/_images/gallery/preview.jpg",
-                "playVideo": false,
-                "videoUrl": "https://www.youtube.com/watch?v=fwkKc6M60-0",
-                "image": "@PROJECT_PATH@/assets/images/moy6feypr98-2000x1125.jpg",
-                "thumb": "@PROJECT_PATH@/assets/images/moy6feypr98-2000x1125-800x450.jpg",
-                "alt": "",
-                "title": "",
-                "customStyle1": "display-7",
-                "caption": "Введите заголовок здесь",
-                "active": true
-              },
-              {
-                "tags": "Потрясающие",
-                "videoPreview": "@THEME_PATH@/components/_images/gallery/preview.jpg",
-                "playVideo": false,
-                "videoUrl": "https://www.youtube.com/watch?v=fwkKc6M60-0",
-                "image": "@THEME_PATH@/components/_images/gallery/gallery00.jpg",
-                "thumb": "@THEME_PATH@/components/_images/gallery/gallery00.jpg",
-                "alt": "",
-                "title": "",
-                "customStyle1": "display-7",
-                "caption": "Введите заголовок здесь",
-                "active": false
-              },
-              {
-                "tags": "Отзывчивый",
-                "videoPreview": "@THEME_PATH@/components/_images/gallery/preview.jpg",
-                "playVideo": false,
-                "videoUrl": "https://www.youtube.com/watch?v=fwkKc6M60-0",
-                "image": "@THEME_PATH@/components/_images/gallery/gallery01.jpg",
-                "thumb": "@THEME_PATH@/components/_images/gallery/gallery01.jpg",
-                "alt": "",
-                "title": "",
-                "customStyle1": "display-7",
-                "caption": "Введите заголовок здесь",
-                "active": false
-              },
-              {
-                "tags": "Анимированный",
-                "videoPreview": "@THEME_PATH@/components/_images/gallery/preview.jpg",
-                "playVideo": false,
-                "videoUrl": "https://www.youtube.com/watch?v=fwkKc6M60-0",
-                "image": "@THEME_PATH@/components/_images/gallery/gallery03.jpg",
-                "thumb": "@THEME_PATH@/components/_images/gallery/gallery03.jpg",
-                "alt": "",
-                "title": "",
-                "customStyle1": "display-7",
-                "caption": "Введите заголовок здесь",
-                "active": false
-              },
-              {
-                "tags": "Потрясающие",
-                "videoPreview": "@THEME_PATH@/components/_images/gallery/preview.jpg",
-                "playVideo": false,
-                "videoUrl": "https://www.youtube.com/watch?v=fwkKc6M60-0",
-                "image": "@THEME_PATH@/components/_images/gallery/gallery04.jpg",
-                "thumb": "@THEME_PATH@/components/_images/gallery/gallery04.jpg",
-                "alt": "",
-                "title": "",
-                "customStyle1": "display-7",
-                "caption": "Введите заголовок здесь",
-                "active": false
-              },
-              {
-                "tags": "Потрясающие",
-                "videoPreview": "@THEME_PATH@/components/_images/gallery/preview.jpg",
-                "playVideo": false,
-                "videoUrl": "https://www.youtube.com/watch?v=fwkKc6M60-0",
-                "image": "@THEME_PATH@/components/_images/gallery/gallery05.jpg",
-                "thumb": "@THEME_PATH@/components/_images/gallery/gallery05.jpg",
-                "alt": "",
-                "title": "",
-                "customStyle1": "display-7",
-                "caption": "Введите заголовок здесь",
-                "active": false
-              },
-              {
-                "tags": "Отзывчивый",
-                "videoPreview": "@THEME_PATH@/components/_images/gallery/preview.jpg",
-                "playVideo": false,
-                "videoUrl": "https://www.youtube.com/watch?v=fwkKc6M60-0",
-                "image": "@THEME_PATH@/components/_images/gallery/gallery06.jpg",
-                "thumb": "@THEME_PATH@/components/_images/gallery/gallery06.jpg",
-                "alt": "",
-                "title": "",
-                "customStyle1": "display-7",
-                "caption": "Введите заголовок здесь",
-                "active": false
-              },
-              {
-                "tags": "Анимированный",
-                "videoPreview": "@THEME_PATH@/components/_images/gallery/preview.jpg",
-                "playVideo": false,
-                "videoUrl": "https://www.youtube.com/watch?v=fwkKc6M60-0",
-                "image": "@THEME_PATH@/components/_images/gallery/gallery07.jpg",
-                "thumb": "@THEME_PATH@/components/_images/gallery/gallery07.jpg",
-                "alt": "",
-                "title": "",
-                "customStyle1": "display-7",
-                "caption": "Введите заголовок здесь",
-                "active": false
-              },
-              {
-                "tags": "Творческий",
-                "videoPreview": "@THEME_PATH@/components/_images/gallery/preview.jpg",
-                "playVideo": false,
-                "videoUrl": "https://www.youtube.com/watch?v=fwkKc6M60-0",
-                "image": "@PROJECT_PATH@/assets/images/1525807668-0-0-5184-3456-1440x900-80-0-1-8b20283ae3e8a4fba92fad477838e2fa.jpg.webp",
-                "thumb": "@PROJECT_PATH@/assets/images/1525807668-0-0-5184-3456-1440x900-80-0-1-8b20283ae3e8a4fba92fad477838e2fa.jpg.webp",
-                "alt": "uuuu",
-                "title": "",
-                "customStyle1": "display-7",
-                "caption": "Введите заголовок здесь",
-                "active": false
+          "_params": {}
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "padding-top": "(@paddingTop * 15px)",
+            "padding-bottom": "(@paddingBottom * 15px)",
+            "& when (@bg-type = 'color')": {
+              "background-color": "@bg-value"
+            },
+            "& when (@bg-type = 'image')": {
+              "background-image": "url(@bg-value)"
+            },
+            ".mbr-text": {
+              "color": "#716c80"
+            },
+            ".card-wrapper": {
+              "display": "flex",
+              "flex-direction": "row",
+              "border-radius": "10px",
+              "align-items": "center",
+              "justify-content": "center",
+              "background-color": "@cardcolor",
+              "transition": "all 0.3s",
+              "padding": "1rem 1rem !important",
+              "box-shadow": "0 10px 55px 5px rgba(137, 173, 255, 0.35)",
+              "&:hover": {
+                "transform": "translateY(-1rem)",
+                ".ico2": {
+                  "color": "@primaryColor !important"
+                }
               }
-            ]
-          }
+            },
+            ".text-info": {
+              "&:hover": {
+                "color": "inherit!important"
+              }
+            },
+            ".ico2": {
+              "color": "@infoColor !important",
+              "transition": "all 0.6s"
+            },
+            ".card-box": {
+              "padding": "0rem 1rem"
+            },
+            ".ico1": {
+              "font-size": "(@IconSize * 1rem) !important"
+            },
+            "h3, h4": {
+              "padding": "0",
+              "margin": "0"
+            },
+            ".card-title, .card-img": {
+              "color": "#57468b"
+            },
+            ".card-title": {
+              "color": "#57468b"
+            },
+            "H1": {
+              "color": "#57468b"
+            },
+            ".text, .mbr-section-btn": {
+              "color": "#716c80"
+            }
+          },
+          "_name": "design-block",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"features1\" group=\"Features\" data-bg-video=\"{{bg.type == 'video' && bg.value.url}}\" mbr-class=\"{'mbr-parallax-background': bg.parallax}\">\n\n    <mbr-parameters>\n        <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"9\" step=\"1\" value=\"5\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"9\" step=\"1\" value=\"5\">\n\n        <input type=\"checkbox\" title=\"Show Title\" name=\"showTitle\" checked>\n        <input type=\"checkbox\" title=\"Show Text\" name=\"showText\" checked>\n                <input type=\"checkbox\" title=\"Show Card Title\" name=\"showcardTitle\" checked>\n        <input type=\"checkbox\" title=\"Show Card Text\" name=\"showcardText\" checked>\n         <input type=\"checkbox\" title=\"Show Buttons\" name=\"showButtons\" checked>\n        <input type=\"range\" inline title=\"Icons Size\" name=\"IconSize\" min=\"1\" max=\"5\" step=\"0.5\" value=\"3\">\n        <input type=\"color\" name=\"cardcolor\" title=\"Card BG Color\" value=\"#ffffff\" selected>\n        <select title=\"Cards\" name=\"cardsAmount\">\n            <option value=\"1\">1</option>\n            <option value=\"2\">2</option>\n            <option value=\"3\">3</option>\n            <option value=\"4\" selected>4</option>\n        </select>\n\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Background Image\" value=\"file:///C:/Users/Csaba/AppData/Local/Mobirise.com/Mobirise/chesswizardextra_0040gmail_002ecom/userblocks/mobirise4/features011_1/background1.jpg\" parallax>\n            <input type=\"color\" title=\"Background Color\" value=\"#ffffff\" selected>\n            <input type=\"video\" title=\"Background Video\" value=\"https://www.youtube.com/watch?v=36YgDDJ7XSc\">\n        </fieldset>\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" checked condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#ffffff\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.8\" condition=\"overlay && bg.type !== 'color'\">\n        <!-- End block parameters -->\n    </mbr-parameters>\n\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n    <div class=\"container\">\n        \n         <div class=\"row justify-content-center\">\n          <div class=\"col-md-12 col-lg-6 py-2 m-auto\">\n                <h1 class=\"mbr-section-title mbr-regular pb-3 align-left mbr-fonts-style\" mbr-theme-style=\"display-2\" mbr-if=\"showTitle\">Perfect Intergration</h1>\n                <h3 class=\"mbr-section-subtitle align-left align-left mbr-regular pb-3 mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showSubTitle\">Lorem ipsum dolor sit amet, consectetur adipiscing\n                    elit.</h3>\n                <p class=\"mbr-text text mbr-light pb-3 align-left mbr-fonts-style\" mbr-theme-style=\"display-7\" mbr-if=\"showText\" data-app-selector=\".text, .mbr-section-btn\">\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dui enim, pharetra at auctor vitae,\n                    mollis nec risus. Phasellus sagittis lectus at suscipit pulvinar.</p>\n                <div mbr-buttons mbr-theme-style=\"display-4\" class=\"align-left mbr-section-btn\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove\"><a class=\"btn btn-md btn-primary\" href=\"https://mobirise.co\" data-app-placeholder=\"Type Text\">READ MORE</a></div>\n            </div>\n\n          \n        \n        \n          <div class=\"col-md-12 col-lg-6 py-2 m-auto\">\n        \n        <div class=\"row justify-content-center\">\n\n            <div class=\"card cardcolor p-3 col-12 col-md-6\" mbr-class=\"{'col-lg-6': cardsAmount == '4',\n                             'col-lg-6': cardsAmount == '3'}\">\n             <div class=\"card-wrapper\">\n                <div class=\"card-img\">\n                    <a href=\"https://mobirise.com\"><span mbr-icon class=\"mbr-iconfont ico1 socicon-behance socicon\" style=\"color: rgb(255, 51, 102); fill: rgb(255, 51, 102);\"></span></a>\n                </div>\n                <div class=\"card-box\">\n                    <h3 class=\"card-title align-left mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showcardTitle\" data-app-selector=\".card-title\"><a href=\"https://mobirise.com\" class=\"text-info\">Behance</a></h3>\n                    <h4 class=\"mbr-text align-left mbr-fonts-style\" mbr-theme-style=\"display-4\" mbr-if=\"showcardText\" data-app-selector=\".mbr-text\">\n                        PORTFOLIO</h4>\n                </div> \n                   <div class=\"card-img\">\n                    <a href=\"https://mobirise.com\"><span mbr-icon class=\"mbr-iconfont ico2 mobi-mbri-right mobi-mbri\"></span></a>\n                </div>\n                </div>\n            </div>\n\n            <div class=\"card cardcolor p-3 col-12 col-md-6\" mbr-if=\"cardsAmount > 1\" mbr-class=\"{'col-lg-6': cardsAmount == '4',\n                             'col-lg-6': cardsAmount == '3'}\">\n                <div class=\"card-wrapper\">\n                <div class=\"card-img\">\n                    <a href=\"https://mobirise.com\"><span mbr-icon class=\"mbr-iconfont ico1 socicon-vimeo socicon\" style=\"color: rgb(191, 206, 255); fill: rgb(191, 206, 255);\"></span></a>\n                </div>\n                <div class=\"card-box\">\n                    <h3 class=\"card-title align-left mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showcardTitle\" data-app-selector=\".card-title\"><a href=\"https://mobirise.com\" class=\"text-info\">Vimeo</a></h3>\n                    <h4 class=\"mbr-text align-left mbr-fonts-style\" mbr-theme-style=\"display-4\" mbr-if=\"showcardText\" data-app-selector=\".mbr-text\">\n                        VIDEO</h4>\n                </div> \n                   <div class=\"card-img\">\n                    <a href=\"https://mobirise.com\"><span mbr-icon class=\"mbr-iconfont ico2 mobi-mbri-right mobi-mbri\"></span></a>\n                </div>\n                </div>\n            </div>\n\n            <div class=\"card cardcolor p-3 col-12 col-md-6\" mbr-if=\"cardsAmount > 2\" mbr-class=\"{'col-lg-6': cardsAmount == '4',\n                             'col-lg-6': cardsAmount == '3'}\">\n               <div class=\"card-wrapper\">\n                <div class=\"card-img\">\n                    <a href=\"https://mobirise.com\"><span mbr-icon class=\"mbr-iconfont ico1 socicon-twitter socicon\" style=\"color: rgb(85, 128, 255); fill: rgb(85, 128, 255);\"></span></a>\n                </div>\n                <div class=\"card-box\">\n                    <h3 class=\"card-title align-left mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showcardTitle\" data-app-selector=\".card-title\"><a href=\"https://mobirise.com\" class=\"text-info\">Twitter</a></h3>\n                    <h4 class=\"mbr-text align-left mbr-fonts-style\" mbr-theme-style=\"display-4\" mbr-if=\"showcardText\" data-app-selector=\".mbr-text\">\n                        NEWS FEED</h4>\n                </div> \n                   <div class=\"card-img\">\n                    <a href=\"https://mobirise.com\"><span mbr-icon class=\"mbr-iconfont ico2 mobi-mbri-right mobi-mbri\"></span></a>\n                </div>\n                </div>\n            </div>\n\n            <div class=\"card cardcolor p-3 col-12 col-md-6\" mbr-if=\"cardsAmount > 3\" mbr-class=\"{'col-lg-6': cardsAmount == '4',\n                             'col-lg-6': cardsAmount == '3'}\">\n               <div class=\"card-wrapper\">\n                <div class=\"card-img\">\n                    <a href=\"https://mobirise.com\"><span mbr-icon class=\"mbr-iconfont ico1 socicon-instagram socicon\" style=\"color: rgb(255, 138, 115); fill: rgb(255, 138, 115);\"></span></a>\n                </div>\n                <div class=\"card-box\">\n                    <h3 class=\"card-title align-left mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showcardTitle\" data-app-selector=\".card-title\"><a href=\"https://mobirise.com\" class=\"text-info\">Instagram</a></h3>\n                    <h4 class=\"mbr-text align-left mbr-fonts-style\" mbr-theme-style=\"display-4\" mbr-if=\"showcardText\" data-app-selector=\".mbr-text\">\n                        PHOTO</h4>\n                </div> \n                   <div class=\"card-img\">\n                    <a href=\"https://mobirise.com\"><span mbr-icon class=\"mbr-iconfont ico2 mobi-mbri-right mobi-mbri\"></span></a>\n                </div>\n                </div>\n            </div>\n\n        </div>\n </div> \n  </div>\n    </div>\n\n</section>",
+          "_cid": "mVJBXm0diG",
+          "_anchor": "design-block-mVJBXm0diG",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
+        },
+        {
+          "alias": false,
+          "_styles": {
+            ".divider-top": {
+              "position": "relative",
+              "padding": "2.5em",
+              "background": "@bgtop"
+            },
+            ".divider-bottom": {
+              "position": "relative",
+              "padding": "2.5em",
+              "background": "@bgbottom"
+            },
+            ".divider-top::before, .divider-bottom::before, .divider-top::after,  .divider-bottom::after": {
+              "position": "absolute",
+              "content": "''",
+              "pointer-events": "none"
+            },
+            ".divider-triangles::after": {
+              "left": "50%",
+              "width": "100px",
+              "height": "100px",
+              "-webkit-transform": "translateX(-50%) rotate(45deg)",
+              "transform": "translateX(-50%) rotate(45deg)",
+              "bottom": "-50px",
+              "z-index": "10",
+              "background": "inherit"
+            },
+            ".divider-triangles::before": {
+              "top": "-50px"
+            },
+            ".divider-halfcircle::after": {
+              "left": "50%",
+              "z-index": "10",
+              "width": "100px",
+              "height": "100px",
+              "border-radius": "50%",
+              "background": "inherit",
+              "-webkit-transform": "translateX(-50%)",
+              "transform": "translateX(-50%)",
+              "bottom": "-50px"
+            },
+            ".divider-halfcircle::before": {
+              "top": "-50px"
+            },
+            ".divider-multitriangles::before, .divider-multitriangles::after": {
+              "left": "50%",
+              "width": "50px",
+              "height": "50px",
+              "-webkit-transform": "translateX(-50%) rotate(45deg)",
+              "transform": "translateX(-50%) rotate(45deg)"
+            },
+            ".divider-multitriangles::after": {
+              "bottom": "-25px",
+              "z-index": "10",
+              "background": "inherit",
+              "box-shadow": "-50px 50px 0 @bgtop, 50px -50px 0 @bgtop"
+            }
+          },
+          "_name": "design-block",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"header1\" group=\"Headers\">\n\n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <select title=\"Type\" name=\"type\">\n         <option value=\"triangles\" selected>Triangles</option>\n         <option value=\"halfcircle\">Halfcircle</option>\n         <option value=\"multitriangles\">Multitriangles</option>        </select>\n        <input type=\"color\" title=\"Background Color Top\" name=\"bgtop\" value=\"#efefef\">        <input type=\"color\" title=\"Background Color Bottom\" name=\"bgbottom\" value=\"#879a9f\">\n    <!-- End block parameters -->\n    </mbr-parameters>\n\n    <div class=\"divider-top divider-triangles\" mbr-if=\"type == 'triangles'\"></div>    <div class=\"divider-top divider-halfcircle\" mbr-if=\"type == 'halfcircle'\"></div>    <div class=\"divider-top divider-multitriangles\" mbr-if=\"type == 'multitriangles'\"></div>\n    <div class=\"divider-bottom\"></div>\n</section>",
+          "_cid": "Fw5fjWSMnb",
+          "_anchor": "design-block-Fw5fjWSMnb",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
         }
       ]
     }
