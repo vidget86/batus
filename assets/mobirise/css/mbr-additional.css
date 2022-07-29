@@ -1539,3 +1539,17 @@ a {
   border-radius: .25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+.cid-EQvCwyNk2d {
+  padding-top: 45px;
+  padding-bottom: 110px;
+  background-color: #000000;
+}
+.cid-EQvCwyNk2d svg {
+  overflow: hidden;
+  vertical-align: middle;
+  position: absolute;
+  bottom: 0;
+}
+.cid-EQvCwyNk2d .wave {
+  fill: #353535;
+}
